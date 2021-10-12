@@ -7,11 +7,30 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainViewControllerViewDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	var newView = MainViewControllerView()
 
-    }
+	override func loadView() {
+		newView.delegate = self
+		view = newView
+	}
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		navigationController?.navigationBar.isHidden = true
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		navigationController?.navigationBar.isHidden = true
+	}
+
+	func playSinglePlayer() {
+		self.navigationController?.pushViewController(GameViewController(), animated: true)
+	}
+
+	func playMultiplayerButton() {
+
+	}
 }

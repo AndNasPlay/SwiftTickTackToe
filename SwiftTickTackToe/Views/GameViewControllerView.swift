@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol GameViewControllerViewDelegate: AnyObject {
+	func restartGame()
+}
+
 class GameViewControllerView: UIView {
+
+	weak var delegate: GameViewControllerViewDelegate?
 
 	private(set) lazy var firstPlayerLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textColor = .black
 		text.textAlignment = .center
-		text.font = UIFont.boldSystemFont(ofSize: 30.0)
+		text.font = UIFont.boldSystemFont(ofSize: 20.0)
 		text.text = "1st player"
 		return text
 	}()
@@ -24,7 +30,7 @@ class GameViewControllerView: UIView {
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textAlignment = .center
 		text.textColor = .black
-		text.font = UIFont.boldSystemFont(ofSize: 30.0)
+		text.font = UIFont.boldSystemFont(ofSize: 20.0)
 		text.text = "2nd player"
 		return text
 	}()
@@ -34,7 +40,7 @@ class GameViewControllerView: UIView {
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textAlignment = .center
 		text.textColor = .black
-		text.font = UIFont.boldSystemFont(ofSize: 30.0)
+		text.font = UIFont.boldSystemFont(ofSize: 20.0)
 		text.text = "win lable"
 		return text
 	}()
@@ -42,7 +48,7 @@ class GameViewControllerView: UIView {
 	private(set) lazy var restartButton: UIButton = {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.titleLabel?.text = "Resturt"
+		button.setTitle("Resturt", for: .normal)
 		button.backgroundColor = .gray
 		return button
 	}()
@@ -60,42 +66,41 @@ class GameViewControllerView: UIView {
 	}
 
 	func createSubviews() {
-		backgroundColor = .red
+		backgroundColor = .white
 		self.addSubview(firstPlayerLable)
-//		self.addSubview(winLable)
-//		self.addSubview(secondPlayerLable)
-//		self.addSubview(restartButton)
+		self.addSubview(winLable)
+		self.addSubview(secondPlayerLable)
+		self.addSubview(restartButton)
+		restartButton.addTarget(self,
+							   action: #selector(handleRestartGameTouchUpInseide),
+							   for: .touchUpInside)
 	}
 
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			firstPlayerLable.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-			firstPlayerLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			firstPlayerLable.heightAnchor.constraint(equalToConstant: 200.0),
-			firstPlayerLable.widthAnchor.constraint(equalToConstant: 200.0),
+			firstPlayerLable.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+			firstPlayerLable.trailingAnchor.constraint(equalTo: self.centerXAnchor),
+			firstPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+			firstPlayerLable.heightAnchor.constraint(equalToConstant: 40.0),
 
+			secondPlayerLable.leadingAnchor.constraint(equalTo: self.centerXAnchor),
+			secondPlayerLable.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20.0),
+			secondPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+			secondPlayerLable.heightAnchor.constraint(equalToConstant: 40.0),
 
-//			firstPlayerLable.topAnchor.constraint(equalTo: self.topAnchor, constant: 50.0),
-//			firstPlayerLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
-//			firstPlayerLable.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -20.0),
-//			firstPlayerLable.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -100.0),
+			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: 5.0),
+			winLable.heightAnchor.constraint(equalToConstant: 40.0),
 
-//			secondPlayerLable.topAnchor.constraint(equalTo: self.topAnchor, constant: 50.0),
-//			secondPlayerLable.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 20.0),
-//			secondPlayerLable.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20.0),
-//			secondPlayerLable.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -100.0),
-//
-//			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: 50.0),
-//			winLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
-//			winLable.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -20.0),
-//			winLable.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -100.0),
-//
-//			restartButton.topAnchor.constraint(equalTo: self.centerYAnchor, constant: -100.0),
-//			restartButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
-//			restartButton.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -20.0),
-//			restartButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 100.0),
-
+			restartButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80.0),
+			restartButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80.0),
+			restartButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -40.0),
+			restartButton.heightAnchor.constraint(equalToConstant: 40.0)
 		])
+	}
+
+	@objc func handleRestartGameTouchUpInseide() {
+		delegate?.restartGame()
 	}
 }
