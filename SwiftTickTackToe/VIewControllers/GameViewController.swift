@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, GameViewControllerViewDelegate  {
+class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 	public var newView = GameViewControllerView()
 
@@ -77,10 +77,11 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate  {
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			gameboardView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20.0),
-			gameboardView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20.0),
-			gameboardView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-			gameboardView.heightAnchor.constraint(equalToConstant: 400.0)
+			gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor, constant: 20.0),
+			gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor, constant: -20.0),
+			gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor),
+			gameboardView.topAnchor.constraint(equalTo: self.newView.winLable.bottomAnchor, constant: 50.0),
+			gameboardView.bottomAnchor.constraint(equalTo: self.newView.restartButton.topAnchor, constant: -50.0)
 		])
 	}
 

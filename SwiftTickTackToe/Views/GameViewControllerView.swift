@@ -15,12 +15,22 @@ class GameViewControllerView: UIView {
 
 	weak var delegate: GameViewControllerViewDelegate?
 
+	private(set) lazy var leadingTrailingLableAnchor: CGFloat = 20.0
+
+	private(set) lazy var topLableHeightAnchor: CGFloat = 40.0
+
+	private(set) lazy var topLableAnchor: CGFloat = 20.0
+
+	private(set) lazy var lableUIFontSize: CGFloat = 20.0
+
+	private(set) lazy var leadingTrailingRestartButtonAnchor: CGFloat = 80.0
+
 	private(set) lazy var firstPlayerLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textColor = .black
 		text.textAlignment = .center
-		text.font = UIFont.boldSystemFont(ofSize: 20.0)
+		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "1st player"
 		return text
 	}()
@@ -30,7 +40,7 @@ class GameViewControllerView: UIView {
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textAlignment = .center
 		text.textColor = .black
-		text.font = UIFont.boldSystemFont(ofSize: 20.0)
+		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "2nd player"
 		return text
 	}()
@@ -40,7 +50,7 @@ class GameViewControllerView: UIView {
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textAlignment = .center
 		text.textColor = .black
-		text.font = UIFont.boldSystemFont(ofSize: 20.0)
+		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "win lable"
 		return text
 	}()
@@ -79,24 +89,31 @@ class GameViewControllerView: UIView {
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			firstPlayerLable.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+			firstPlayerLable.leadingAnchor.constraint(
+				equalTo: self.safeAreaLayoutGuide.leadingAnchor,
+				constant: leadingTrailingLableAnchor),
 			firstPlayerLable.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-			firstPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20.0),
-			firstPlayerLable.heightAnchor.constraint(equalToConstant: 40.0),
+			firstPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: topLableAnchor),
+			firstPlayerLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
 			secondPlayerLable.leadingAnchor.constraint(equalTo: self.centerXAnchor),
-			secondPlayerLable.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20.0),
-			secondPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20.0),
-			secondPlayerLable.heightAnchor.constraint(equalToConstant: 40.0),
+			secondPlayerLable.trailingAnchor.constraint(
+				equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+				constant: -leadingTrailingLableAnchor),
+			secondPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: topLableAnchor),
+			secondPlayerLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
 			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: 5.0),
-			winLable.heightAnchor.constraint(equalToConstant: 40.0),
+			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: topLableAnchor),
+			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
-			restartButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80.0),
-			restartButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80.0),
-			restartButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -40.0),
-			restartButton.heightAnchor.constraint(equalToConstant: 40.0)
+			restartButton.leadingAnchor.constraint(
+				equalTo: self.safeAreaLayoutGuide.leadingAnchor,
+				constant: leadingTrailingRestartButtonAnchor),
+			restartButton.trailingAnchor.constraint(
+				equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+				constant: -leadingTrailingRestartButtonAnchor),
+			restartButton.heightAnchor.constraint(equalToConstant: 60.0)
 		])
 	}
 

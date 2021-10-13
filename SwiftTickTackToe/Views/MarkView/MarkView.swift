@@ -85,8 +85,7 @@ public class MarkView: UIView, Copying {
 		}
 	}
 
-	public func animateIn(duration: TimeInterval = 0.5,
-						  completion: @escaping () -> Void) {
+	public func animateIn(duration: TimeInterval = 0.5, completion: @escaping () -> Void) {
 		CATransaction.begin()
 		CATransaction.setCompletionBlock(completion)
 		let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -97,8 +96,7 @@ public class MarkView: UIView, Copying {
 		CATransaction.commit()
 	}
 
-	public func animateOut(duration: TimeInterval = 0.5,
-						   completion: @escaping () -> Void) {
+	public func animateOut(duration: TimeInterval = 0.5, completion: @escaping () -> Void) {
 
 		CATransaction.begin()
 		CATransaction.setCompletionBlock(completion)

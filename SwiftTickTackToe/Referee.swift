@@ -20,7 +20,6 @@ public final class Referee {
 		return winningCombinations
 	}()
 
-
 	public init(gameboard: Gameboard) {
 		self.gameboard = gameboard
 	}
@@ -33,7 +32,6 @@ public final class Referee {
 		}
 		return nil
 	}
-
 
 	private func generateWinsByColumn(result: inout [[GameboardPosition]]) {
 		var array: [GameboardPosition] = []
@@ -60,8 +58,8 @@ public final class Referee {
 	private func generateWinLeftDiagonal(result: inout [[GameboardPosition]]) {
 		guard GameboardSize.columns == GameboardSize.rows else { return }
 		var array: [GameboardPosition] = []
-		for i in 0 ..< GameboardSize.columns {
-			array.append(GameboardPosition(column: i, row: i))
+		for place in 0 ..< GameboardSize.columns {
+			array.append(GameboardPosition(column: place, row: place))
 		}
 		result.append(array)
 	}
@@ -69,8 +67,8 @@ public final class Referee {
 	private func generateWinRightDiagonal(result: inout [[GameboardPosition]]) {
 		guard GameboardSize.columns == GameboardSize.rows else { return }
 		var array: [GameboardPosition] = []
-		for i in 0 ..< GameboardSize.rows {
-			array.append(GameboardPosition(column: i, row: GameboardSize.rows - 1 - i))
+		for place in 0 ..< GameboardSize.rows {
+			array.append(GameboardPosition(column: place, row: GameboardSize.rows - 1 - place))
 		}
 		result.append(array)
 	}

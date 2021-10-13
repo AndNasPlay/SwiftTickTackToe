@@ -17,8 +17,13 @@ class PlayerState: GameState {
 
 	public let markViewPrototype: MarkView
 
-	init(player: Player, gameViewController: GameViewController,
-		 gameBoard: Gameboard, gameBoardView: GameboardView, markViewPrototype: MarkView) {
+	init(
+		player: Player,
+		gameViewController: GameViewController,
+		gameBoard: Gameboard,
+		gameBoardView: GameboardView,
+		markViewPrototype: MarkView) {
+
 		self.player = player
 		self.gameViewController = gameViewController
 		self.gameBoard = gameBoard
