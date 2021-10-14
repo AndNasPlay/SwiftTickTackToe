@@ -13,6 +13,7 @@ public class OView: MarkView {
 		super.updateShapeLayer()
 		let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
 		let radius = 0.3 * min(bounds.width, bounds.height)
+		shapeLayer.strokeColor = UIColor.buttonsAndOViewColor.cgColor
 		shapeLayer.path = UIBezierPath(arcCenter: center,
 									   radius: radius,
 									   startAngle: 330 * CGFloat.pi / 180,

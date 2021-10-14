@@ -27,10 +27,10 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	}
 
 	func playSinglePlayer() {
-		self.navigationController?.pushViewController(GameViewController(), animated: true)
+		self.navigationController?.pushViewController(GameViewController(gameMode: .singlePlayer), animated: true)
 	}
 
 	func playMultiplayerButton() {
-
+		self.navigationController?.pushViewController(GameViewController(gameMode: .multiplayer), animated: true)
 	}
 }

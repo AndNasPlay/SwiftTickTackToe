@@ -15,6 +15,8 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 	private var gameboardView = GameboardView()
 
+	private let gameMode: GameMode
+
 	private lazy var referee = Referee(gameboard: gameBoard)
 
 	private var currentState: GameState! {
@@ -25,14 +27,30 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 	private var counter: Int = 0
 
+	init(gameMode: GameMode) {
+		self.gameMode = gameMode
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	// swiftlint:disable unavailable_function
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	// swiftlint:enable unavailable_function
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view = newView
 		newView.delegate = self
-		gameboardView.translatesAutoresizingMaskIntoConstraints = false
-		gameboardView.backgroundColor = .white
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
+		navigationController?.navigationBar.barTintColor = .viewBackgroundColor
+		tabBarController?.tabBar.barTintColor = UIColor.brown
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			barButtonSystemItem: .refresh,
+			target: self,
+			action: #selector(handleRestartTouchUpInseide)
+	 )
 		constraintsInit()
 		setFirstState()
 
@@ -64,13 +82,17 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 			return
 		}
 
-		if let playerInputState = currentState as? PlayerState {
-			let player = playerInputState.player.next
-			currentState = PlayerState(player: playerInputState.player.next,
-									   gameViewController: self,
-									   gameBoard: gameBoard,
-									   gameBoardView: gameboardView,
-									   markViewPrototype: player.markViewPrototype)
+		if gameMode == .multiplayer {
+			if let playerInputState = currentState as? PlayerState {
+				let player = playerInputState.player.next
+				currentState = PlayerState(player: playerInputState.player.next,
+										   gameViewController: self,
+										   gameBoard: gameBoard,
+										   gameBoardView: gameboardView,
+										   markViewPrototype: player.markViewPrototype)
+			}
+		} else if gameMode == .singlePlayer {
+
 		}
 	}
 
@@ -80,15 +102,18 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 			gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor, constant: 20.0),
 			gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor, constant: -20.0),
 			gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor),
-			gameboardView.topAnchor.constraint(equalTo: self.newView.winLable.bottomAnchor, constant: 50.0),
-			gameboardView.bottomAnchor.constraint(equalTo: self.newView.restartButton.topAnchor, constant: -50.0)
+			gameboardView.topAnchor.constraint(equalTo: self.newView.winLable.bottomAnchor, constant: 50.0)
 		])
 	}
 
-	func restartGame() {
+	@objc func handleRestartTouchUpInseide() {
 		gameboardView.clear()
 		gameBoard.clear()
 		setFirstState()
 		counter = 0
+	}
+
+	func restartGame() {
+
 	}
 }

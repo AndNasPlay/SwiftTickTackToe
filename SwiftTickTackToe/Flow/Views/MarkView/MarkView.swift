@@ -9,8 +9,10 @@ import UIKit
 
 public class MarkView: UIView, Copying {
 
-	public var lineColor: UIColor = .black
-	public var lineWidth: CGFloat = 7
+	public var lineColor: UIColor = .xViewColor
+
+	public var lineWidth: CGFloat = 8
+
 	public var textColor: UIColor = .red {
 		didSet { label.textColor = textColor }
 	}

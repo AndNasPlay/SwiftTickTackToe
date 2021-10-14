@@ -16,21 +16,24 @@ class MainViewControllerView: UIView {
 
 	weak var delegate: MainViewControllerViewDelegate?
 
-	private(set) lazy var buttonCornerRadius: CGFloat = 20.0
+	private(set) lazy var stackViewbuttonSpacing: CGFloat = 20.0
 
 	private(set) lazy var leadingTrailingAnchorStackView: CGFloat = 40.0
 
 	private(set) lazy var centerYAnchorStackViewIndent: CGFloat = 70.0
 
-	private(set) lazy var stackViewHeightAnchor: CGFloat = 180.0
+	private(set) lazy var stackViewHeightAnchor: CGFloat = 170.0
+
+	private(set) lazy var buttonsFontSize: CGFloat = 30.0
 
 	private(set) lazy var singlePlayer: UIButton = {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("Single player", for: .normal)
-		button.setTitleColor(.black, for: .normal)
-		button.backgroundColor = .lightGray
-		button.layer.cornerRadius = buttonCornerRadius
+		button.setTitleColor(.white, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize)
+		button.backgroundColor = .buttonsAndOViewColor
+		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4
 		return button
 	}()
 
@@ -38,9 +41,10 @@ class MainViewControllerView: UIView {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("Multiplayer", for: .normal)
-		button.setTitleColor(.black, for: .normal)
-		button.backgroundColor = .lightGray
-		button.layer.cornerRadius = buttonCornerRadius
+		button.setTitleColor(.white, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize)
+		button.backgroundColor = .buttonsAndOViewColor
+		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4
 		return button
 	}()
 
@@ -49,7 +53,7 @@ class MainViewControllerView: UIView {
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		stackView.axis = .vertical
 		stackView.alignment = .fill
-		stackView.spacing = 30.0
+		stackView.spacing = stackViewbuttonSpacing
 		stackView.distribution = .fillEqually
 		return stackView
 	}()
@@ -67,7 +71,7 @@ class MainViewControllerView: UIView {
 	}
 
 	func createSubviews() {
-		backgroundColor = .white
+		backgroundColor = .viewBackgroundColor
 		self.addSubview(stackView)
 		stackView.addArrangedSubview(singlePlayer)
 		stackView.addArrangedSubview(multiplayerButton)

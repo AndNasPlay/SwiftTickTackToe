@@ -55,35 +55,24 @@ class GameViewControllerView: UIView {
 		return text
 	}()
 
-	private(set) lazy var restartButton: UIButton = {
-		var button = UIButton()
-		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setTitle("Resturt", for: .normal)
-		button.backgroundColor = .gray
-		return button
-	}()
-
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		self.backgroundColor = .viewBackgroundColor
 		createSubviews()
 		constraintsInit()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		self.backgroundColor = .viewBackgroundColor
 		createSubviews()
 		constraintsInit()
 	}
 
 	func createSubviews() {
-		backgroundColor = .white
 		self.addSubview(firstPlayerLable)
 		self.addSubview(winLable)
 		self.addSubview(secondPlayerLable)
-		self.addSubview(restartButton)
-		restartButton.addTarget(self,
-							   action: #selector(handleRestartGameTouchUpInseide),
-							   for: .touchUpInside)
 	}
 
 	func constraintsInit() {
@@ -105,19 +94,10 @@ class GameViewControllerView: UIView {
 
 			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: topLableAnchor),
-			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
-
-			restartButton.leadingAnchor.constraint(
-				equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-				constant: leadingTrailingRestartButtonAnchor),
-			restartButton.trailingAnchor.constraint(
-				equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-				constant: -leadingTrailingRestartButtonAnchor),
-			restartButton.heightAnchor.constraint(equalToConstant: 60.0)
+			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor)
 		])
 	}
 
 	@objc func handleRestartGameTouchUpInseide() {
-		delegate?.restartGame()
 	}
 }

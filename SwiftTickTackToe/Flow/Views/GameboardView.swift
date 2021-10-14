@@ -13,9 +13,21 @@ public class GameboardView: UIView {
 
 	public private(set) var markViewForPosition: [GameboardPosition: MarkView] = [:]
 
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.backgroundColor = .viewBackgroundColor
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.backgroundColor = .viewBackgroundColor
+	}
+
 	internal struct Constants {
-		static let lineColor: UIColor = .black
-		static let lineWidth: CGFloat = 7
+		static let lineColor: UIColor = .boardLineColor
+		static let lineWidth: CGFloat = 8
 	}
 
 	private var calculatedColumnWidth: CGFloat {
