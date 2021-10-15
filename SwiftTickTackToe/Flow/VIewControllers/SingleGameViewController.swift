@@ -1,13 +1,13 @@
 //
-//  GameViewController.swift
+//  SingleGameViewController.swift
 //  SwiftTickTackToe
 //
-//  Created by Андрей Щекатунов on 11.10.2021.
+//  Created by Андрей Щекатунов on 15.10.2021.
 //
 
 import UIKit
 
-class GameViewController: UIViewController, GameViewControllerViewDelegate {
+class SingleGameViewController: UIViewController, GameViewControllerViewDelegate {
 
 	public var newView = GameViewControllerView()
 
@@ -66,7 +66,7 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 	private func setFirstState() {
 		let player = Player.first
-		currentState = PlayerState(player: player, gameViewController: self,
+		currentState = GameVsComputerState(player: player, gameViewController: self,
 								   gameBoard: gameBoard, gameBoardView: gameboardView,
 								   markViewPrototype: player.markViewPrototype)
 	}
@@ -84,7 +84,7 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 		if let playerInputState = currentState as? PlayerState {
 			let player = playerInputState.player.next
-			currentState = PlayerState(player: playerInputState.player.next,
+			currentState = GameVsComputerState(player: playerInputState.player.next,
 									   gameViewController: self,
 									   gameBoard: gameBoard,
 									   gameBoardView: gameboardView,

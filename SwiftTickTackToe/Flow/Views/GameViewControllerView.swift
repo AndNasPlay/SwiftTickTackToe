@@ -82,18 +82,20 @@ class GameViewControllerView: UIView {
 				equalTo: self.safeAreaLayoutGuide.leadingAnchor,
 				constant: leadingTrailingLableAnchor),
 			firstPlayerLable.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-			firstPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: topLableAnchor),
+			firstPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
+												  constant: topLableAnchor),
 			firstPlayerLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
 			secondPlayerLable.leadingAnchor.constraint(equalTo: self.centerXAnchor),
-			secondPlayerLable.trailingAnchor.constraint(
-				equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-				constant: -leadingTrailingLableAnchor),
-			secondPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: topLableAnchor),
+			secondPlayerLable.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+														constant: -leadingTrailingLableAnchor),
+			secondPlayerLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
+												   constant: topLableAnchor),
 			secondPlayerLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
 			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor, constant: topLableAnchor),
+			winLable.topAnchor.constraint(equalTo: self.firstPlayerLable.bottomAnchor,
+										  constant: topLableAnchor),
 			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor)
 		])
 	}

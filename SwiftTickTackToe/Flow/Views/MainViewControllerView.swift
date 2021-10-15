@@ -86,13 +86,12 @@ class MainViewControllerView: UIView {
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			stackView.leadingAnchor.constraint(
-				equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-				constant: leadingTrailingAnchorStackView),
-			stackView.trailingAnchor.constraint(
-				equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-				constant: -leadingTrailingAnchorStackView),
-			stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: centerYAnchorStackViewIndent),
+			stackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
+											   constant: leadingTrailingAnchorStackView),
+			stackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+												constant: -leadingTrailingAnchorStackView),
+			stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor,
+											   constant: centerYAnchorStackViewIndent),
 			stackView.heightAnchor.constraint(equalToConstant: stackViewHeightAnchor)
 
 		])

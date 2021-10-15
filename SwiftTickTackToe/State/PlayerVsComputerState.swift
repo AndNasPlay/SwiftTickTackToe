@@ -1,18 +1,18 @@
 //
-//  PlayerState.swift
+//  PlayerVsComputerState.swift
 //  SwiftTickTackToe
 //
-//  Created by Андрей Щекатунов on 12.10.2021.
+//  Created by Андрей Щекатунов on 15.10.2021.
 //
 
 import Foundation
 
-class PlayerState: GameState {
+class PlayerVsComputerState: GameVsComputerState {
 
 	var isMoveCompleted: Bool = false
 
 	public let player: Player
-	private weak var gameViewController: GameViewController?
+	private weak var gameViewController: SingleGameViewController?
 	private weak var gameBoard: Gameboard?
 	private weak var gameBoardView: GameboardView?
 
@@ -20,7 +20,7 @@ class PlayerState: GameState {
 
 	init(
 		player: Player,
-		gameViewController: GameViewController,
+		gameViewController: SingleGameViewController,
 		gameBoard: Gameboard,
 		gameBoardView: GameboardView,
 		markViewPrototype: MarkView) {
@@ -52,6 +52,20 @@ class PlayerState: GameState {
 
 		gameBoard?.setPlayer(player, at: position)
 		gameBoardView.placeMarkView(markViewPrototype.copy(), at: position)
+		isMoveCompleted = true
+	}
+
+	func addComputerMark(at position: GameboardPosition) {
+
+		var computerPosition: GameboardPosition = GameboardPosition(column: Int.random(in: 1..<4), row: Int.random(in: 1..<4))
+
+		guard let gameBoardView = gameBoardView, gameBoardView.canPlaceMarkView(at: computerPosition) else {
+			computerPosition = GameboardPosition(column: Int.random(in: 1..<4), row: Int.random(in: 1..<4))
+			return
+		}
+
+		gameBoard?.setPlayer(player, at: computerPosition)
+		gameBoardView.placeMarkView(markViewPrototype.copy(), at: computerPosition)
 		isMoveCompleted = true
 	}
 }

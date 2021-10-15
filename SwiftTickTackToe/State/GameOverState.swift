@@ -8,6 +8,7 @@
 import Foundation
 
 class GameOverState: GameState {
+
 	var isMoveCompleted = false
 
 	public let winner: Player?
