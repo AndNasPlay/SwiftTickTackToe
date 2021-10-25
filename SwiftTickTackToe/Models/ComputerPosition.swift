@@ -15,12 +15,56 @@ public class ComputerPosition {
 
 	var computerMovesArray: [GameboardPosition] = []
 
+	var winPatterns: [[GameboardPosition]] = [
+		[
+			GameboardPosition(column: 0, row: 0),
+			GameboardPosition(column: 1, row: 1),
+			GameboardPosition(column: 2, row: 2)
+		],
+		[
+			GameboardPosition(column: 0, row: 0),
+			GameboardPosition(column: 1, row: 0),
+			GameboardPosition(column: 2, row: 0)
+		],
+		[
+			GameboardPosition(column: 0, row: 1),
+			GameboardPosition(column: 1, row: 1),
+			GameboardPosition(column: 2, row: 1)
+		],
+		[
+			GameboardPosition(column: 0, row: 2),
+			GameboardPosition(column: 1, row: 2),
+			GameboardPosition(column: 2, row: 2)
+		],
+		[
+			GameboardPosition(column: 0, row: 2),
+			GameboardPosition(column: 1, row: 1),
+			GameboardPosition(column: 2, row: 0)
+		],
+		[
+			GameboardPosition(column: 0, row: 0),
+			GameboardPosition(column: 0, row: 1),
+			GameboardPosition(column: 0, row: 2)
+		],
+		[
+			GameboardPosition(column: 1, row: 0),
+			GameboardPosition(column: 1, row: 1),
+			GameboardPosition(column: 1, row: 2)
+		],
+		[
+			GameboardPosition(column: 2, row: 0),
+			GameboardPosition(column: 2, row: 1),
+			GameboardPosition(column: 2, row: 2)
+		]
+	]
+
 	func nextStep(gameboard: Gameboard) -> GameboardPosition? {
 
+		var column: Int = Int.random(in: 0..<3)
+		var row: Int = Int.random(in: 0..<3)
+		var position = GameboardPosition(column: column, row: row)
+
 		if GameboardState.shared.allGameboardPositions.count < 2 {
-			var column: Int = Int.random(in: 0..<3)
-			var row: Int = Int.random(in: 0..<3)
-			var position = GameboardPosition(column: column, row: row)
 
 			while gameboard.contains(at: position) != nil {
 				column = Int.random(in: 0..<3)
@@ -37,6 +81,19 @@ public class ComputerPosition {
 				computerMovesArray.append(GameboardState.shared.allGameboardPositions[counter])
 			}
 			counter += 1
+		}
+
+		var winPatternsFirstCounter = 0
+
+		while  winPatternsFirstCounter < winPatterns.count {
+			winPatternsFirstCounter += 1
+
+			for newCounter in 0...2 {
+				if computerMovesArray.contains(winPatterns[winPatternsFirstCounter][newCounter]) {
+
+				}
+
+			}
 		}
 
 		return nil
