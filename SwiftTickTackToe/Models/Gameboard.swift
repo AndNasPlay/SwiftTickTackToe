@@ -33,6 +33,15 @@ public final class Gameboard {
 		return positions[column][row] == player
 	}
 
+	public func contains(at position: GameboardPosition) -> Player? {
+		let (column, row) = (position.column, position.row)
+		return positions[column][row]
+	}
+
+	public func noMoreSteps() -> Bool {
+		return positions.flatMap { $0 }.allSatisfy { $0 != nil }
+	}
+
 	private func initialPositions() -> [[Player?]] {
 		var positions: [[Player?]] = []
 		for _ in 0 ..< GameboardSize.columns {

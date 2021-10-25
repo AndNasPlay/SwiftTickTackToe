@@ -52,6 +52,7 @@ public class GameboardView: UIView {
 		guard self.canPlaceMarkView(at: position) else { return }
 		updateFrame(for: markView, at: position)
 		markViewForPosition[position] = markView
+		GameboardState.shared.addMove(gameboardPosition: position)
 		addSubview(markView)
 	}
 

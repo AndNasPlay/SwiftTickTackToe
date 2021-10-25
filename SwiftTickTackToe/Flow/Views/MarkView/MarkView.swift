@@ -115,7 +115,5 @@ public class MarkView: UIView, Copying {
 		label.font = UIFont.systemFont(ofSize: size, weight: .thin)
 	}
 
-	internal func updateShapeLayer() {
-		// meant for subclasses to override
-	}
+	internal func updateShapeLayer() { }
 }

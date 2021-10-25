@@ -9,27 +9,14 @@ import Foundation
 
 class PlayerState: GameState {
 
-	var isMoveCompleted: Bool = false
+	var isCompleted: Bool = false
 
 	public let player: Player
 	private weak var gameViewController: GameViewController?
-	private weak var gameBoard: Gameboard?
-	private weak var gameBoardView: GameboardView?
 
-	public let markViewPrototype: MarkView
-
-	init(
-		player: Player,
-		gameViewController: GameViewController,
-		gameBoard: Gameboard,
-		gameBoardView: GameboardView,
-		markViewPrototype: MarkView) {
-
+	init( player: Player, gameViewController: GameViewController) {
 		self.player = player
 		self.gameViewController = gameViewController
-		self.gameBoard = gameBoard
-		self.gameBoardView = gameBoardView
-		self.markViewPrototype = markViewPrototype
 	}
 
 	func begin() {
@@ -40,18 +27,39 @@ class PlayerState: GameState {
 		case .second:
 			gameViewController?.newView.firstPlayerLable.isHidden = true
 			gameViewController?.newView.secondPlayerLable.isHidden = false
+		default: break
 		}
 		gameViewController?.newView.winLable.isHidden = true
 	}
 
 	func addMark(at position: GameboardPosition) {
 
-		guard let gameBoardView = gameBoardView, gameBoardView.canPlaceMarkView(at: position) else {
+		guard let gameBoardView = gameViewController?.gameboardView, gameBoardView.canPlaceMarkView(at: position)
+		else {
 			return
 		}
 
-		gameBoard?.setPlayer(player, at: position)
-		gameBoardView.placeMarkView(markViewPrototype.copy(), at: position)
-		isMoveCompleted = true
+		let markView: MarkView
+		switch self.player {
+		case .first:
+			markView = XView()
+		case .second:
+			markView = OView()
+		default:
+			return
+		}
+
+		gameViewController?.gameBoard.setPlayer(self.player, at: position)
+		gameViewController?.gameboardView.placeMarkView(markView, at: position)
+
+		self.isCompleted = true
+		nextStep()
+	}
+
+	private func nextStep() {
+		let nextStepState = PlayerState(player: player.next(gameType: gameViewController!.gameType),
+										gameViewController: gameViewController!)
+		let state = ReviewGameState(context: gameViewController!, nextState: nextStepState)
+		gameViewController!.goToNextState(state)
 	}
 }

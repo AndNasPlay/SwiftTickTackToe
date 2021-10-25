@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol GameViewControllerViewDelegate: AnyObject {
-	func restartGame()
-}
-
 class GameViewControllerView: UIView {
-
-	weak var delegate: GameViewControllerViewDelegate?
 
 	private(set) lazy var leadingTrailingLableAnchor: CGFloat = 20.0
 
@@ -22,8 +16,6 @@ class GameViewControllerView: UIView {
 	private(set) lazy var topLableAnchor: CGFloat = 20.0
 
 	private(set) lazy var lableUIFontSize: CGFloat = 20.0
-
-	private(set) lazy var leadingTrailingRestartButtonAnchor: CGFloat = 80.0
 
 	private(set) lazy var firstPlayerLable: UILabel = {
 		let text = UILabel()
@@ -98,8 +90,5 @@ class GameViewControllerView: UIView {
 										  constant: topLableAnchor),
 			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor)
 		])
-	}
-
-	@objc func handleRestartGameTouchUpInseide() {
 	}
 }

@@ -9,7 +9,7 @@ import Foundation
 
 class GameOverState: GameState {
 
-	var isMoveCompleted = false
+	var isCompleted: Bool = false
 
 	public let winner: Player?
 
@@ -41,8 +41,10 @@ class GameOverState: GameState {
 			return "1st player"
 		case .second:
 			return "2nd player"
+		case .computer:
+			return "2nd player"
 		case .none:
-			return "there is no winner"
+			return "There is no winner"
 		}
 	}
 }

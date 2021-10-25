@@ -7,19 +7,20 @@
 
 import UIKit
 
-class GameViewController: UIViewController, GameViewControllerViewDelegate {
+public class GameViewController: UIViewController {
 
-	public var newView = GameViewControllerView()
+	var newView = GameViewControllerView()
 
-	private let gameBoard = Gameboard()
+	public let gameBoard = Gameboard()
 
-	private var gameboardView = GameboardView()
+	public var gameboardView = GameboardView()
 
-	private let gameMode: GameMode
+	private(set) var gameType: GameType = .multiplayer
 
-	private lazy var referee = Referee(gameboard: gameBoard)
+	private(set) lazy var referee = Referee(gameboard: self.gameBoard)
 
 	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 20.0
+
 	private(set) lazy var topAnchorGameBoard: CGFloat = 50.0
 
 	private var currentState: GameState! {
@@ -28,21 +29,18 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 		}
 	}
 
-	private var counter: Int = 0
-
-	init(gameMode: GameMode) {
-		self.gameMode = gameMode
+	init(gameMode: GameType) {
+		self.gameType = gameMode
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required convenience init?(coder: NSCoder) {
-		self.init(gameMode: .singlePlayer)
+		self.init(gameMode: .multiplayer)
 	}
 
-	override func viewDidLoad() {
+	public override func viewDidLoad() {
 		super.viewDidLoad()
 		view = newView
-		newView.delegate = self
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
 		navigationController?.navigationBar.barTintColor = .viewBackgroundColor
@@ -56,40 +54,19 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 
 		gameboardView.onSelectPosition = { [weak self] position in
 			guard let self = self else { return }
-			self.counter += 1
 			self.currentState.addMark(at: position)
-			if self.currentState.isMoveCompleted {
-				self.setNextState()
-			}
 		}
 	}
 
 	private func setFirstState() {
-		let player = Player.first
-		currentState = PlayerState(player: player, gameViewController: self,
-								   gameBoard: gameBoard, gameBoardView: gameboardView,
-								   markViewPrototype: player.markViewPrototype)
+		gameBoard.clear()
+		gameboardView.clear()
+		GameboardState.shared.clear()
+		self.currentState = GameTypeState().checkState(gameType: self.gameType, viewController: self)
 	}
 
-	private func setNextState() {
-		if let winner = referee.determineWinner() {
-			currentState = GameOverState(winner: winner, gameViewController: self)
-			return
-		}
-
-		if counter >= 9 {
-			currentState = GameOverState(winner: nil, gameViewController: self)
-			return
-		}
-
-		if let playerInputState = currentState as? PlayerState {
-			let player = playerInputState.player.next
-			currentState = PlayerState(player: playerInputState.player.next,
-									   gameViewController: self,
-									   gameBoard: gameBoard,
-									   gameBoardView: gameboardView,
-									   markViewPrototype: player.markViewPrototype)
-		}
+	func goToNextState(_ state: GameState) {
+		self.currentState = state
 	}
 
 	func constraintsInit() {
@@ -108,9 +85,7 @@ class GameViewController: UIViewController, GameViewControllerViewDelegate {
 	@objc func handleRestartTouchUpInseide() {
 		gameboardView.clear()
 		gameBoard.clear()
+		GameboardState.shared.clear()
 		setFirstState()
-		counter = 0
 	}
-
-	func restartGame() { }
 }

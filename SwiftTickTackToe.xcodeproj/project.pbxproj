@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1613D4BF271AFA0E00517D25 /* ComputerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613D4BE271AFA0E00517D25 /* ComputerState.swift */; };
+		1613D4C1271B159A00517D25 /* ComputerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613D4C0271B159A00517D25 /* ComputerPosition.swift */; };
+		165248C02726E4AC00CA943C /* GameTypeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248BF2726E4AC00CA943C /* GameTypeState.swift */; };
+		165248C22726E88A00CA943C /* GameboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C12726E88A00CA943C /* GameboardState.swift */; };
+		165248C42726EFD400CA943C /* ComputerMovesAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */; };
+		165248C62727033100CA943C /* ReviewGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C52727033100CA943C /* ReviewGameState.swift */; };
 		168B984F2714B90400A66B51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B984E2714B90400A66B51 /* MainViewController.swift */; };
 		168B98522714B95E00A66B51 /* GameboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98512714B95E00A66B51 /* GameboardView.swift */; };
 		168B98542714B97100A66B51 /* MainViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98532714B97100A66B51 /* MainViewControllerView.swift */; };
@@ -29,13 +35,16 @@
 		16C6314F2714B2400040B47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C6314E2714B2400040B47D /* Assets.xcassets */; };
 		16C631522714B2400040B47D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C631502714B2400040B47D /* LaunchScreen.storyboard */; };
 		16CBC6B927187D70002A308B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBC6B827187D70002A308B /* UIColorExtension.swift */; };
-		16CBC6BB2719D2E5002A308B /* SingleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBC6BA2719D2E5002A308B /* SingleGameViewController.swift */; };
-		16CBC6BD2719D759002A308B /* PlayerVsComputerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBC6BC2719D759002A308B /* PlayerVsComputerState.swift */; };
-		16F6A16D271732CF00F93B2F /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6A16C271732CF00F93B2F /* GameMode.swift */; };
-		16F6A16F2718420900F93B2F /* GameVsComputerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6A16E2718420900F93B2F /* GameVsComputerState.swift */; };
+		16F6A16D271732CF00F93B2F /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6A16C271732CF00F93B2F /* GameType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1613D4BE271AFA0E00517D25 /* ComputerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerState.swift; sourceTree = "<group>"; };
+		1613D4C0271B159A00517D25 /* ComputerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPosition.swift; sourceTree = "<group>"; };
+		165248BF2726E4AC00CA943C /* GameTypeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypeState.swift; sourceTree = "<group>"; };
+		165248C12726E88A00CA943C /* GameboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardState.swift; sourceTree = "<group>"; };
+		165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMovesAlgorithm.swift; sourceTree = "<group>"; };
+		165248C52727033100CA943C /* ReviewGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewGameState.swift; sourceTree = "<group>"; };
 		168B984E2714B90400A66B51 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		168B98512714B95E00A66B51 /* GameboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardView.swift; sourceTree = "<group>"; };
 		168B98532714B97100A66B51 /* MainViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerView.swift; sourceTree = "<group>"; };
@@ -60,10 +69,7 @@
 		16C631512714B2400040B47D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16C631532714B2400040B47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16CBC6B827187D70002A308B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		16CBC6BA2719D2E5002A308B /* SingleGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGameViewController.swift; sourceTree = "<group>"; };
-		16CBC6BC2719D759002A308B /* PlayerVsComputerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVsComputerState.swift; sourceTree = "<group>"; };
-		16F6A16C271732CF00F93B2F /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
-		16F6A16E2718420900F93B2F /* GameVsComputerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVsComputerState.swift; sourceTree = "<group>"; };
+		16F6A16C271732CF00F93B2F /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +99,6 @@
 			children = (
 				16C631492714B23B0040B47D /* GameViewController.swift */,
 				168B984E2714B90400A66B51 /* MainViewController.swift */,
-				16CBC6BA2719D2E5002A308B /* SingleGameViewController.swift */,
 			);
 			path = VIewControllers;
 			sourceTree = "<group>";
@@ -115,7 +120,8 @@
 				16A167982715E4EE007E63FE /* GameboardSize.swift */,
 				16A1679A2715E522007E63FE /* Player.swift */,
 				16A1679C2715E543007E63FE /* Gameboard.swift */,
-				16F6A16C271732CF00F93B2F /* GameMode.swift */,
+				16F6A16C271732CF00F93B2F /* GameType.swift */,
+				1613D4C0271B159A00517D25 /* ComputerPosition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,11 +129,13 @@
 		16A167A82715E75F007E63FE /* State */ = {
 			isa = PBXGroup;
 			children = (
+				165248C12726E88A00CA943C /* GameboardState.swift */,
 				16A167A92715E770007E63FE /* GameState.swift */,
 				16A167AB2715E779007E63FE /* PlayerState.swift */,
-				16F6A16E2718420900F93B2F /* GameVsComputerState.swift */,
-				16CBC6BC2719D759002A308B /* PlayerVsComputerState.swift */,
+				1613D4BE271AFA0E00517D25 /* ComputerState.swift */,
 				16A167AD2715E789007E63FE /* GameOverState.swift */,
+				165248BF2726E4AC00CA943C /* GameTypeState.swift */,
+				165248C52727033100CA943C /* ReviewGameState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 				16C631472714B23B0040B47D /* SceneDelegate.swift */,
 				16A167A62715E63B007E63FE /* Referee.swift */,
 				16A167A42715E604007E63FE /* Copying.swift */,
+				165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -282,29 +291,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16F6A16D271732CF00F93B2F /* GameMode.swift in Sources */,
+				16F6A16D271732CF00F93B2F /* GameType.swift in Sources */,
 				16C6314A2714B23B0040B47D /* GameViewController.swift in Sources */,
+				165248C02726E4AC00CA943C /* GameTypeState.swift in Sources */,
+				165248C42726EFD400CA943C /* ComputerMovesAlgorithm.swift in Sources */,
 				16A167972715E4CF007E63FE /* GameboardPosition.swift in Sources */,
 				16A1679D2715E543007E63FE /* Gameboard.swift in Sources */,
+				1613D4BF271AFA0E00517D25 /* ComputerState.swift in Sources */,
 				16C631462714B23B0040B47D /* AppDelegate.swift in Sources */,
 				168B98542714B97100A66B51 /* MainViewControllerView.swift in Sources */,
 				16A167A32715E5D7007E63FE /* XView.swift in Sources */,
 				16A167A72715E63B007E63FE /* Referee.swift in Sources */,
-				16CBC6BB2719D2E5002A308B /* SingleGameViewController.swift in Sources */,
 				16A167992715E4EE007E63FE /* GameboardSize.swift in Sources */,
 				16A167AA2715E770007E63FE /* GameState.swift in Sources */,
 				16A167A52715E604007E63FE /* Copying.swift in Sources */,
 				16A167AC2715E779007E63FE /* PlayerState.swift in Sources */,
 				168B98562714B97E00A66B51 /* GameViewControllerView.swift in Sources */,
-				16F6A16F2718420900F93B2F /* GameVsComputerState.swift in Sources */,
 				168B98522714B95E00A66B51 /* GameboardView.swift in Sources */,
 				16A167AE2715E789007E63FE /* GameOverState.swift in Sources */,
 				16A167A12715E5BF007E63FE /* OView.swift in Sources */,
 				16C631482714B23B0040B47D /* SceneDelegate.swift in Sources */,
+				165248C62727033100CA943C /* ReviewGameState.swift in Sources */,
 				16A1679B2715E522007E63FE /* Player.swift in Sources */,
 				16CBC6B927187D70002A308B /* UIColorExtension.swift in Sources */,
+				1613D4C1271B159A00517D25 /* ComputerPosition.swift in Sources */,
 				168B984F2714B90400A66B51 /* MainViewController.swift in Sources */,
-				16CBC6BD2719D759002A308B /* PlayerVsComputerState.swift in Sources */,
+				165248C22726E88A00CA943C /* GameboardState.swift in Sources */,
 				16A1679F2715E584007E63FE /* MarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
