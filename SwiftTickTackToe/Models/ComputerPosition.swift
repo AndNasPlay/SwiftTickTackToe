@@ -70,9 +70,9 @@ public class ComputerPosition {
 
 	func nextStep(gameboard: Gameboard) -> GameboardPosition? {
 
-		//		var column: Int = Int.random(in: 0..<3)
-		//		var row: Int = Int.random(in: 0..<3)
-		//		var position = GameboardPosition(column: column, row: row)
+		let column: Int = Int.random(in: 0..<3)
+		let row: Int = Int.random(in: 0..<3)
+		position = GameboardPosition(column: column, row: row)
 
 		allBoardMovesArray = GameboardState.shared.allGameboardPositions
 
@@ -99,24 +99,23 @@ public class ComputerPosition {
 							winPatternsForHuman.remove(at: newConunter)
 						}
 						newConunter += 1
+						print(winPatternsForHuman)
 					}
 				}
 			}
 
 			var counter = 0
-			for check in 0...winPatternsForHuman.count - 1 {
+			var check =  Int.random(in: 0..<winPatternsForHuman.count)
+			position = winPatternsForHuman[check][counter]
+			while gameboard.contains(at: position) != nil {
 				position = winPatternsForHuman[check][counter]
-				while gameboard.contains(at: position) != nil {
-					position = winPatternsForHuman[check][counter]
-					counter += 1
-					if counter == 3 {
-						counter = 0
-						break
-					}
+				check =  Int.random(in: 0..<winPatternsForHuman.count)
+				counter += 1
+				if counter == 3 {
+					counter = 0
 				}
-				counter = 0
-				return position
 			}
+			counter = 0
 			return position
 
 		} else {
@@ -124,11 +123,11 @@ public class ComputerPosition {
 			while newConunter <  winPatternsForAI.count {
 				for anotherCounter in 0...allMoveHumanArray.count - 1 {
 					if newConunter < winPatternsForAI.count && !winPatternsForAI[newConunter].isEmpty {
-							if winPatternsForAI[newConunter].contains(allMoveHumanArray[anotherCounter]) {
-								winPatternsForAI.remove(at: newConunter)
-							}
-							newConunter += 1
+						if winPatternsForAI[newConunter].contains(allMoveHumanArray[anotherCounter]) {
+							winPatternsForAI.remove(at: newConunter)
 						}
+						newConunter += 1
+					}
 				}
 			}
 
