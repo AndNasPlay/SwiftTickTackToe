@@ -43,7 +43,7 @@ public class GameViewController: UIViewController {
 		view = newView
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
-		navigationController?.navigationBar.barTintColor = .viewBackgroundColor
+		navigationController?.navigationBar.barTintColor = .lightGray
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .refresh,
 			target: self,

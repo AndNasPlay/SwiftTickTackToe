@@ -27,7 +27,7 @@ public class GameboardView: UIView {
 
 	internal struct Constants {
 		static let lineColor: UIColor = .boardLineColor
-		static let lineWidth: CGFloat = 8
+		static let lineWidth: CGFloat = 6
 	}
 
 	private var calculatedColumnWidth: CGFloat {
