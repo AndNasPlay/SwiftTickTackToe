@@ -7,105 +7,190 @@
 
 import Foundation
 
-struct move {
-	var index: [Int]?
-	var score: [Int]?
+struct Move {
+	var index: Int?
+	var score: Int
 }
 
-class ComputerMovesAlgorithm {
+public class ComputerMovesAlgorithm {
 
-	var origBoard = [22, 1 , 33, 33, 4 , 33, 6 ,22, 22]
-
-	// человек
 	var huPlayer = 22
-
-	// ИИ
 	var aiPlayer = 33
 
-	// возвращает список индексов пустых клеток доски
 	func emptyIndices(board: [Int]) -> [Int] {
-		return  board.filter { $0 != 22 && $0 != 33 }
+		return  board.filter { $0 != huPlayer && $0 != aiPlayer }
 	}
 
-	// победные комбинации с учётом индексов
-	func winning(board: [Int], player: Int)-> Bool {
-		if(
-			(board[0] == player && board[1] == player && board[2] == player) ||
+	func winning(board: [Int], player: Int) -> Bool {
+		if  (board[0] == player && board[1] == player && board[2] == player) ||
 				(board[3] == player && board[4] == player && board[5] == player) ||
 				(board[6] == player && board[7] == player && board[8] == player) ||
 				(board[0] == player && board[3] == player && board[6] == player) ||
 				(board[1] == player && board[4] == player && board[7] == player) ||
 				(board[2] == player && board[5] == player && board[8] == player) ||
 				(board[0] == player && board[4] == player && board[8] == player) ||
-				(board[2] == player && board[4] == player && board[6] == player)
-		)
-		{
+				(board[2] == player && board[4] == player && board[6] == player) {
 			return true
 		} else {
 			return false
 		}
 	}
 
-	// основная минимакс-функция
-	func minimax(newBoard: [Int], player: Int) -> Int {
+	func minimax(newBoard: [Int], player: Int) -> Move {
 
 		var newNewBoard: [Int] = newBoard
 
-		let availSpots = emptyIndices(board: newBoard)
+		let availSpots = emptyIndices(board: newNewBoard)
 
-		if (winning(board: newBoard, player: huPlayer)) {
-			return -10
-		} else if (winning(board: newBoard, player: aiPlayer)) {
-			return 10
+		if winning(board: newNewBoard, player: huPlayer) {
+			return Move(score: -10)
+		} else if winning(board: newNewBoard, player: aiPlayer) {
+			return Move(score: 10)
 		} else if availSpots.count == 0 {
-			return 0
+			return Move(score: 0)
 		}
-		// массив для хранения всех объектов
-		var moves: [move] = []
-		// цикл по доступным клеткам
-		for i in 0...availSpots.count {
-			var move: move
-			move.index?.append(newBoard[availSpots[i]])
-			// совершить ход за текущего игрока
-			newNewBoard[availSpots[i]] = player
 
-			//получить очки, заработанные после вызова минимакса от противника текущего игрока
-			if (player == aiPlayer){
-				var result = minimax(newBoard: newNewBoard, player: huPlayer)
-				move.score?.append(result)
+		var moves: [Move] = []
+
+		for counter in 0...availSpots.count - 1 {
+			var move: Move = Move(index: 0, score: 0)
+			move.index = newNewBoard[availSpots[counter]]
+			newNewBoard[availSpots[counter]] = player
+
+			if player == aiPlayer {
+				let result = minimax(newBoard: newNewBoard, player: huPlayer)
+				move.score = result.score
 			} else {
-				var result = minimax(newBoard: newNewBoard, player: aiPlayer)
-				move.score?.append(result)
+				let result = minimax(newBoard: newNewBoard, player: aiPlayer)
+				move.score = result.score
 			}
-			// очистить клетку
-			newNewBoard[availSpots[i]] = (move.index?.first)!;
-			// положить объект в массив
+
+			newNewBoard[availSpots[counter]] = move.index!
 			moves.append(move)
 		}
 
-	// если это ход ИИ, пройти циклом по ходам и выбрать ход с наибольшим количеством очков
-	  var bestMove = 0
-	  if (player == aiPlayer) {
-		var bestScore = -10000;
-		for i in 0...moves.count {
-			if(moves[i].score > bestScore){
-			bestScore = moves[i].score;
-			bestMove = i;
-		  }
-		}
-	  }else{
+		var bestMove = Int()
+		if player == aiPlayer {
+			var bestScore = -10000
+			for counter in 0...moves.count - 1  where (moves[counter].score) > bestScore {
+				bestScore = (moves[counter].score)
+				bestMove = counter
+			}
+		} else {
 
-	// иначе пройти циклом по ходам и выбрать ход с наименьшим количеством очков
-		var bestScore = 10000;
-		for(var i = 0; i < moves.length; i++){
-		  if(moves[i].score < bestScore){
-			bestScore = moves[i].score;
-			bestMove = i;
-		  }
-		}
-	  }
+			var bestScore = 10000
+			for counter in 0...moves.count - 1 where (moves[counter].score) < bestScore {
+				bestScore = (moves[counter].score)
+				bestMove = counter
 
-	// вернуть выбранный ход (объект) из массива ходов
-	  return moves[bestMove];
+			}
+		}
+		return (moves[bestMove])
+	}
+
+	func replace(array: [Int], position: Int, value: Int) -> [Int] {
+		var newArray = array
+		newArray.remove(at: position)
+		newArray.insert(value, at: position)
+		return newArray
+	}
+
+	func switcher (
+		oldIntGameboardPositions: [Int],
+		gameboardPositions: [GameboardPosition],
+		normalPosition: Int, player: Int ) -> [Int] {
+
+		var intGameboardPositions = oldIntGameboardPositions
+
+		if returnGameboardPosition().contains(gameboardPositions[normalPosition]) {
+			intGameboardPositions = replace(array: intGameboardPositions,
+											position: returnGameboardPosition().firstIndex {
+												$0 == gameboardPositions[normalPosition]
+											}!,
+											value: player)
+		}
+
+		return intGameboardPositions
+	}
+
+	func prepareForMinimax(gameboardPositions: [GameboardPosition]) -> [Int] {
+		let huPlayer = 22
+		let aiPlayer = 33
+		var intGameboardPositions: [Int] = []
+		let gameboardSizeColumns: Int = GameboardSize.columns
+		let gameboardSizeRows: Int = GameboardSize.rows
+		let gameboardSize: Int = gameboardSizeColumns * gameboardSizeRows
+		for counter in 0...gameboardSize - 1 {
+			intGameboardPositions.append(counter)
+		}
+		for normalPosition in 0...gameboardPositions.count - 1 {
+			if normalPosition % 2 == 0 || normalPosition == 0 {
+
+				intGameboardPositions = switcher(oldIntGameboardPositions: intGameboardPositions,
+												 gameboardPositions: gameboardPositions,
+												 normalPosition: normalPosition,
+												 player: huPlayer)
+
+			} else {
+
+				intGameboardPositions = switcher(oldIntGameboardPositions: intGameboardPositions,
+												 gameboardPositions: gameboardPositions,
+												 normalPosition: normalPosition,
+												 player: aiPlayer)
+
+			}
+		}
+		return intGameboardPositions
+	}
+
+	func prepareForBoard(gameboardPositions: Move) -> GameboardPosition {
+		var bestPosition: GameboardPosition = GameboardPosition(column: 0, row: 0)
+		switch gameboardPositions.index {
+		case 0:
+			bestPosition = GameboardPosition(column: 0, row: 0)
+		case 1:
+			bestPosition = GameboardPosition(column: 1, row: 0)
+		case 2:
+			bestPosition = GameboardPosition(column: 2, row: 0)
+		case 3:
+			bestPosition = GameboardPosition(column: 0, row: 1)
+		case 4:
+			bestPosition = GameboardPosition(column: 1, row: 1)
+		case 5:
+			bestPosition = GameboardPosition(column: 2, row: 1)
+		case 6:
+			bestPosition = GameboardPosition(column: 0, row: 2)
+		case 7:
+			bestPosition = GameboardPosition(column: 1, row: 2)
+		case 8:
+			bestPosition = GameboardPosition(column: 2, row: 2)
+		default:
+			break
+		}
+		return bestPosition
+	}
+
+	func returnGameboardPosition() -> [GameboardPosition] {
+		var newArray: [GameboardPosition] = []
+		var counter = 0
+		while counter < GameboardSize.rows {
+			for counterColumn in 0...GameboardSize.columns - 1 {
+				newArray.append(GameboardPosition(column: counterColumn, row: counter))
+			}
+			counter += 1
+		}
+
+		return newArray
+	}
+
+	func returnIntOnGameboardPosition() -> [Int] {
+		var newArray: [Int] = []
+		var counter = 0
+		while counter < GameboardSize.rows * GameboardSize.columns {
+			newArray.append(counter)
+			counter += 1
+		}
+
+		return newArray
 	}
 }
