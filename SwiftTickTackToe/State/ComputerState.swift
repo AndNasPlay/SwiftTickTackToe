@@ -52,10 +52,12 @@ public class ComputerState: GameState {
 
 	private func computerMakeStep() {
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
 			guard let self = self,
 				  let viewController = self.viewController,
-				  let position = ComputerPosition.shared.nextStep(gameboard: viewController.gameBoard)
+				  let position = ComputerPosition.shared.nextStep(
+															gameboard: viewController.gameBoard,
+															complexity: viewController.complexity)
 			else { return }
 
 			viewController.gameBoard.setPlayer(.computer, at: position)

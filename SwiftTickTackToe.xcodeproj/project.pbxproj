@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1613D4BF271AFA0E00517D25 /* ComputerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613D4BE271AFA0E00517D25 /* ComputerState.swift */; };
 		1613D4C1271B159A00517D25 /* ComputerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613D4C0271B159A00517D25 /* ComputerPosition.swift */; };
+		16266ABE272C01E500A0C6F2 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16266ABD272C01E500A0C6F2 /* Move.swift */; };
+		16266AC0272C073400A0C6F2 /* SinglePlayerGameComplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16266ABF272C073400A0C6F2 /* SinglePlayerGameComplexity.swift */; };
+		16266AC2272C69FE00A0C6F2 /* ComplexityUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16266AC1272C69FE00A0C6F2 /* ComplexityUIView.swift */; };
+		16266AC4272C6BB300A0C6F2 /* ComplexityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16266AC3272C6BB300A0C6F2 /* ComplexityViewController.swift */; };
 		165248C02726E4AC00CA943C /* GameTypeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248BF2726E4AC00CA943C /* GameTypeState.swift */; };
 		165248C22726E88A00CA943C /* GameboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C12726E88A00CA943C /* GameboardState.swift */; };
 		165248C42726EFD400CA943C /* ComputerMovesAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */; };
@@ -41,6 +45,10 @@
 /* Begin PBXFileReference section */
 		1613D4BE271AFA0E00517D25 /* ComputerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerState.swift; sourceTree = "<group>"; };
 		1613D4C0271B159A00517D25 /* ComputerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPosition.swift; sourceTree = "<group>"; };
+		16266ABD272C01E500A0C6F2 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		16266ABF272C073400A0C6F2 /* SinglePlayerGameComplexity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerGameComplexity.swift; sourceTree = "<group>"; };
+		16266AC1272C69FE00A0C6F2 /* ComplexityUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexityUIView.swift; sourceTree = "<group>"; };
+		16266AC3272C6BB300A0C6F2 /* ComplexityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexityViewController.swift; sourceTree = "<group>"; };
 		165248BF2726E4AC00CA943C /* GameTypeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypeState.swift; sourceTree = "<group>"; };
 		165248C12726E88A00CA943C /* GameboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardState.swift; sourceTree = "<group>"; };
 		165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMovesAlgorithm.swift; sourceTree = "<group>"; };
@@ -90,6 +98,7 @@
 				168B98512714B95E00A66B51 /* GameboardView.swift */,
 				168B98552714B97E00A66B51 /* GameViewControllerView.swift */,
 				168B98532714B97100A66B51 /* MainViewControllerView.swift */,
+				16266AC1272C69FE00A0C6F2 /* ComplexityUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +108,7 @@
 			children = (
 				16C631492714B23B0040B47D /* GameViewController.swift */,
 				168B984E2714B90400A66B51 /* MainViewController.swift */,
+				16266AC3272C6BB300A0C6F2 /* ComplexityViewController.swift */,
 			);
 			path = VIewControllers;
 			sourceTree = "<group>";
@@ -122,6 +132,8 @@
 				16A1679C2715E543007E63FE /* Gameboard.swift */,
 				16F6A16C271732CF00F93B2F /* GameType.swift */,
 				1613D4C0271B159A00517D25 /* ComputerPosition.swift */,
+				16266ABD272C01E500A0C6F2 /* Move.swift */,
+				16266ABF272C073400A0C6F2 /* SinglePlayerGameComplexity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16266ABE272C01E500A0C6F2 /* Move.swift in Sources */,
 				16F6A16D271732CF00F93B2F /* GameType.swift in Sources */,
 				16C6314A2714B23B0040B47D /* GameViewController.swift in Sources */,
 				165248C02726E4AC00CA943C /* GameTypeState.swift in Sources */,
@@ -299,6 +312,7 @@
 				16A1679D2715E543007E63FE /* Gameboard.swift in Sources */,
 				1613D4BF271AFA0E00517D25 /* ComputerState.swift in Sources */,
 				16C631462714B23B0040B47D /* AppDelegate.swift in Sources */,
+				16266AC0272C073400A0C6F2 /* SinglePlayerGameComplexity.swift in Sources */,
 				168B98542714B97100A66B51 /* MainViewControllerView.swift in Sources */,
 				16A167A32715E5D7007E63FE /* XView.swift in Sources */,
 				16A167A72715E63B007E63FE /* Referee.swift in Sources */,
@@ -309,6 +323,7 @@
 				168B98562714B97E00A66B51 /* GameViewControllerView.swift in Sources */,
 				168B98522714B95E00A66B51 /* GameboardView.swift in Sources */,
 				16A167AE2715E789007E63FE /* GameOverState.swift in Sources */,
+				16266AC2272C69FE00A0C6F2 /* ComplexityUIView.swift in Sources */,
 				16A167A12715E5BF007E63FE /* OView.swift in Sources */,
 				16C631482714B23B0040B47D /* SceneDelegate.swift in Sources */,
 				165248C62727033100CA943C /* ReviewGameState.swift in Sources */,
@@ -317,6 +332,7 @@
 				1613D4C1271B159A00517D25 /* ComputerPosition.swift in Sources */,
 				168B984F2714B90400A66B51 /* MainViewController.swift in Sources */,
 				165248C22726E88A00CA943C /* GameboardState.swift in Sources */,
+				16266AC4272C6BB300A0C6F2 /* ComplexityViewController.swift in Sources */,
 				16A1679F2715E584007E63FE /* MarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

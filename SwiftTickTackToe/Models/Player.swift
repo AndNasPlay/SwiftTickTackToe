@@ -14,16 +14,16 @@ public enum Player: CaseIterable {
 
 	func next(gameType: GameType) -> Player {
 		switch gameType {
-		case .multiplayer:
-			switch self {
-			case .first: return .second
-			case .second: return .first
-			default: return .first
-			}
 		case .singlePlayer:
 			switch self {
 			case .first: return .computer
 			case .computer: return .first
+			default: return .first
+			}
+		case .multiplayer:
+			switch self {
+			case .first: return .second
+			case .second: return .first
 			default: return .first
 			}
 		}

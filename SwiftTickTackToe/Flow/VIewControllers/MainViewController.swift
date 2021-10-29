@@ -27,10 +27,15 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	}
 
 	func playSinglePlayer() {
-		self.navigationController?.pushViewController(GameViewController(gameMode: .singlePlayer), animated: true)
+		let complexityVC = ComplexityViewController()
+		complexityVC.modalTransitionStyle = .coverVertical
+		present(complexityVC, animated: true, completion: nil)
 	}
 
 	func playMultiplayerButton() {
-		self.navigationController?.pushViewController(GameViewController(gameMode: .multiplayer), animated: true)
+		self.navigationController?.pushViewController(GameViewController(
+														gameMode: .multiplayer,
+														complexity: .easy),
+													  animated: true)
 	}
 }

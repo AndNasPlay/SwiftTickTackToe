@@ -17,6 +17,8 @@ public class GameViewController: UIViewController {
 
 	private(set) var gameType: GameType = .multiplayer
 
+	private(set) var complexity: SinglePlayerGameComplexity = .easy
+
 	private(set) lazy var referee = Referee(gameboard: self.gameBoard)
 
 	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 20.0
@@ -29,13 +31,14 @@ public class GameViewController: UIViewController {
 		}
 	}
 
-	init(gameMode: GameType) {
+	init(gameMode: GameType, complexity: SinglePlayerGameComplexity) {
+		self.complexity = complexity
 		self.gameType = gameMode
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required convenience init?(coder: NSCoder) {
-		self.init(gameMode: .multiplayer)
+		self.init(gameMode: .multiplayer, complexity: .easy)
 	}
 
 	public override func viewDidLoad() {

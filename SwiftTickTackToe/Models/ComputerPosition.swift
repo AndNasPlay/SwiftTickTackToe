@@ -15,17 +15,9 @@ public class ComputerPosition {
 
 	var position = GameboardPosition(column: 0, row: 0)
 
-	var tester = ComputerMovesAlgorithm()
+	var computerMovesAlgorithm = ComputerMovesAlgorithm()
 
-	var winPatternsFirstCounter = 0
-	var winPatternsSecondCounter = 0
-
-	var allMoveAiArray: [GameboardPosition] = []
-	var allMoveHumanArray: [GameboardPosition] = []
 	var allBoardMovesArray: [GameboardPosition] = []
-
-	var winPatternsForAI: [[GameboardPosition]] = []
-	var winPatternsForHuman: [[GameboardPosition]] = []
 
 	var winPatterns: [[GameboardPosition]] = [
 		[
@@ -70,91 +62,109 @@ public class ComputerPosition {
 		]
 	]
 
-	func nextStep(gameboard: Gameboard) -> GameboardPosition? {
-
-		position = tester.prepareForBoard(
-			gameboardPositions: tester.minimax(newBoard: tester.prepareForMinimax(
-																gameboardPositions: GameboardState.shared.allGameboardPositions),
-											   player: tester.aiPlayer))
-
-		if gameboard.contains(at: position) == nil {
-			return position
+	func findPositionForWin(gameboard: Gameboard, allMoveAiArray: [GameboardPosition]) -> GameboardPosition {
+		var winPatternsForAI: [GameboardPosition] = []
+		var positionForWin = GameboardPosition(column: 0, row: 0)
+		for winCounter in 0...7 {
+			winPatternsForAI = winPatterns[winCounter]
+			for counter in 0...allMoveAiArray.count - 1 {
+				if winPatterns[winCounter].contains(allMoveAiArray[counter]) {
+					if let idx = winPatternsForAI.firstIndex(where: { $0 == allMoveAiArray[counter] }) {
+						winPatternsForAI.remove(at: idx)
+					}
+				}
+			}
+			if !winPatternsForAI.isEmpty {
+				if winPatternsForAI.count == 1 && !allBoardMovesArray.contains(winPatternsForAI.first!) {
+					positionForWin = winPatternsForAI[0]
+					if gameboard.contains(at: position) == nil {
+						return positionForWin
+					}
+				}
+			}
 		}
-		return nil
+		return positionForWin
+	}
+
+	func findPositionForCancel(gameboard: Gameboard, allMoveHumanArray: [GameboardPosition]) -> GameboardPosition {
+		var winPatternsForHuman: [GameboardPosition] = []
+		var positionForWin = GameboardPosition(column: 0, row: 0)
+		for winCounter in 0...7 {
+			winPatternsForHuman = winPatterns[winCounter]
+			for counter in 0...allMoveHumanArray.count - 1 {
+				if winPatterns[winCounter].contains(allMoveHumanArray[counter]) {
+					if let idx = winPatternsForHuman.firstIndex(where: { $0 == allMoveHumanArray[counter] }) {
+						winPatternsForHuman.remove(at: idx)
+					}
+				}
+			}
+			if !winPatternsForHuman.isEmpty {
+				if winPatternsForHuman.count == 1 && !allBoardMovesArray.contains(winPatternsForHuman.first!) {
+					positionForWin = winPatternsForHuman[0]
+					if gameboard.contains(at: position) == nil {
+						break
+					}
+				}
+			}
+		}
+		return positionForWin
+	}
+
+	func findRandomStep(gameboard: Gameboard) -> GameboardPosition {
+
+		var column: Int = Int.random(in: 0..<3)
+		var row: Int = Int.random(in: 0..<3)
+		var randomPosition = GameboardPosition(column: column, row: row)
+
+		while gameboard.contains(at: randomPosition) != nil {
+			column = Int.random(in: 0..<3)
+			row = Int.random(in: 0..<3)
+			randomPosition = GameboardPosition(column: column, row: row)
+		}
+		return randomPosition
+	}
+
+	func nextStep(gameboard: Gameboard, complexity: SinglePlayerGameComplexity) -> GameboardPosition? {
+		if complexity == .hard {
+			position = computerMovesAlgorithm.prepareForBoard(
+				gameboardPositions: computerMovesAlgorithm.minimax(newBoard: computerMovesAlgorithm.prepareForMinimax(
+																	gameboardPositions: GameboardState.shared.allGameboardPositions),
+																   player: computerMovesAlgorithm.computer))
+
+			if gameboard.contains(at: position) == nil {
+				return position
+			} else {
+				return findRandomStep(gameboard: gameboard)
+			}
+		} else {
+
+			allBoardMovesArray = GameboardState.shared.allGameboardPositions
+
+			if allBoardMovesArray.count < 3 {
+				return findRandomStep(gameboard: gameboard)
+			} else {
+				var allMoveAiArray: [GameboardPosition] = []
+				var allMoveHumanArray: [GameboardPosition] = []
+				for counter in 0...allBoardMovesArray.count - 1 {
+					if counter == 0 || counter % 2 == 0 {
+						allMoveHumanArray.append(allBoardMovesArray[counter])
+					} else {
+						allMoveAiArray.append(allBoardMovesArray[counter])
+					}
+				}
+				let positionForWin = findPositionForWin(gameboard: gameboard, allMoveAiArray: allMoveAiArray)
+				let positionForCancel = findPositionForCancel(gameboard: gameboard, allMoveHumanArray: allMoveHumanArray)
+
+				if  positionForWin != GameboardPosition(column: 0, row: 0) {
+					position = positionForWin
+					return position
+				} else if  positionForCancel != GameboardPosition(column: 0, row: 0) {
+					position = positionForCancel
+					return position
+				} else {
+					return findRandomStep(gameboard: gameboard)
+				}
+			}
+		}
 	}
 }
-
-//	func nextStep(gameboard: Gameboard) -> GameboardPosition? {
-//
-//		let column: Int = Int.random(in: 0..<3)
-//		let row: Int = Int.random(in: 0..<3)
-//		position = GameboardPosition(column: column, row: row)
-//
-//		allBoardMovesArray = GameboardState.shared.allGameboardPositions
-//
-//		winPatternsForAI = winPatterns
-//		winPatternsForHuman = winPatterns
-//
-//		while winPatternsFirstCounter < allBoardMovesArray.count {
-//
-//			if winPatternsFirstCounter == 0 || winPatternsFirstCounter % 2 != 0 {
-//				allMoveHumanArray.append(allBoardMovesArray[winPatternsFirstCounter])
-//			} else {
-//				allMoveAiArray.append(allBoardMovesArray[winPatternsFirstCounter])
-//			}
-//			winPatternsFirstCounter += 1
-//		}
-//
-//		if allMoveHumanArray.count >= 2 {
-//
-//			var newConunter = 0
-//			while newConunter <  winPatternsForHuman.count {
-//				for anotherCounter in 0...allMoveHumanArray.count - 1 {
-//					if newConunter < winPatternsForHuman.count && !winPatternsForHuman[newConunter].isEmpty {
-//						if winPatternsForHuman[newConunter].contains(allMoveHumanArray[anotherCounter]) {
-//							winPatternsForHuman.remove(at: newConunter)
-//						}
-//						newConunter += 1
-//						print(winPatternsForHuman)
-//					}
-//				}
-//			}
-//
-//			var counter = 0
-//			var check =  Int.random(in: 0..<winPatternsForHuman.count)
-//			position = winPatternsForHuman[check][counter]
-//			while gameboard.contains(at: position) != nil {
-//				position = winPatternsForHuman[check][counter]
-//				check =  Int.random(in: 0..<winPatternsForHuman.count)
-//				counter += 1
-//				if counter == 3 {
-//					counter = 0
-//				}
-//			}
-//			counter = 0
-//			return position
-//
-//		} else {
-//			var newConunter = 0
-//			while newConunter <  winPatternsForAI.count {
-//				for anotherCounter in 0...allMoveHumanArray.count - 1 {
-//					if newConunter < winPatternsForAI.count && !winPatternsForAI[newConunter].isEmpty {
-//						if winPatternsForAI[newConunter].contains(allMoveHumanArray[anotherCounter]) {
-//							winPatternsForAI.remove(at: newConunter)
-//						}
-//						newConunter += 1
-//					}
-//				}
-//			}
-//
-//			var counter = 0
-//			position = winPatternsForAI.first![counter]
-//
-//			while gameboard.contains(at: position) != nil {
-//				position = winPatternsForAI.first![counter]
-//				counter += 1
-//			}
-//			counter = 0
-//			return position
-//		}
-//	}

@@ -1,35 +1,33 @@
 //
-//  MainViewControllerView.swift
+//  ComplexityUIView.swift
 //  SwiftTickTackToe
 //
-//  Created by Андрей Щекатунов on 11.10.2021.
+//  Created by Андрей Щекатунов on 29.10.2021.
 //
 
 import UIKit
 
-protocol MainViewControllerViewDelegate: AnyObject {
-	func playSinglePlayer()
-	func playMultiplayerButton()
+protocol ComplexityViewControllerViewDelegate: AnyObject {
+	func easy()
+	func hard()
 }
 
-class MainViewControllerView: UIView {
+class ComplexityUIView: UIView {
 
-	weak var delegate: MainViewControllerViewDelegate?
+	weak var delegate: ComplexityViewControllerViewDelegate?
 
 	private(set) lazy var stackViewbuttonSpacing: CGFloat = 20.0
 
-	private(set) lazy var leadingTrailingAnchorStackView: CGFloat = 40.0
+	private(set) lazy var leadingTrailingAnchorStackView: CGFloat = 60.0
 
-	private(set) lazy var centerYAnchorStackViewIndent: CGFloat = 70.0
+	private(set) lazy var stackViewHeightAnchor: CGFloat = 120.0
 
-	private(set) lazy var stackViewHeightAnchor: CGFloat = 170.0
+	private(set) lazy var buttonsFontSize: CGFloat = 20.0
 
-	private(set) lazy var buttonsFontSize: CGFloat = 30.0
-
-	private(set) lazy var singlePlayer: UIButton = {
+	private(set) lazy var easyButton: UIButton = {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setTitle("Single player", for: .normal)
+		button.setTitle("Easy", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize)
 		button.backgroundColor = .buttonsAndOViewColor
@@ -37,10 +35,10 @@ class MainViewControllerView: UIView {
 		return button
 	}()
 
-	private(set) lazy var multiplayerButton: UIButton = {
+	private(set) lazy var hardButton: UIButton = {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setTitle("Multiplayer", for: .normal)
+		button.setTitle("Hard", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize)
 		button.backgroundColor = .buttonsAndOViewColor
@@ -60,26 +58,29 @@ class MainViewControllerView: UIView {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		self.translatesAutoresizingMaskIntoConstraints = false
 		createSubviews()
 		constraintsInit()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		self.translatesAutoresizingMaskIntoConstraints = false
 		createSubviews()
 		constraintsInit()
 	}
 
 	func createSubviews() {
 		backgroundColor = .viewBackgroundColor
+		self.layer.cornerRadius = 10
 		self.addSubview(stackView)
-		stackView.addArrangedSubview(singlePlayer)
-		stackView.addArrangedSubview(multiplayerButton)
-		singlePlayer.addTarget(self,
-							   action: #selector(handlePlaySinglePlayerTouchUpInseide),
+		stackView.addArrangedSubview(easyButton)
+		stackView.addArrangedSubview(hardButton)
+		easyButton.addTarget(self,
+							   action: #selector(handlePlayEastGameTouchUpInseide),
 							   for: .touchUpInside)
-		multiplayerButton.addTarget(self,
-									action: #selector(handlePlayMultiplayerTouchUpInseide),
+		hardButton.addTarget(self,
+									action: #selector(handlePlayHardGameTouchUpInseide),
 									for: .touchUpInside)
 	}
 
@@ -90,18 +91,17 @@ class MainViewControllerView: UIView {
 											   constant: leadingTrailingAnchorStackView),
 			stackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 												constant: -leadingTrailingAnchorStackView),
-			stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor,
-											   constant: centerYAnchorStackViewIndent),
+			stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
 			stackView.heightAnchor.constraint(equalToConstant: stackViewHeightAnchor)
 
 		])
 	}
 
-	@objc func handlePlayMultiplayerTouchUpInseide() {
-		delegate?.playMultiplayerButton()
+	@objc func handlePlayEastGameTouchUpInseide() {
+		delegate?.easy()
 	}
 
-	@objc func handlePlaySinglePlayerTouchUpInseide() {
-		delegate?.playSinglePlayer()
+	@objc func handlePlayHardGameTouchUpInseide() {
+		delegate?.hard()
 	}
 }

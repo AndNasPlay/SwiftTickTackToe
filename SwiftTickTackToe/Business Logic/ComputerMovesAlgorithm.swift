@@ -7,29 +7,24 @@
 
 import Foundation
 
-struct Move {
-	var index: Int?
-	var score: Int
-}
-
 public class ComputerMovesAlgorithm {
 
-	var huPlayer = 22
-	var aiPlayer = 33
+	var human = 22
+	var computer = 33
 
 	func emptyIndices(board: [Int]) -> [Int] {
-		return  board.filter { $0 != huPlayer && $0 != aiPlayer }
+		return  board.filter { $0 != human && $0 != computer }
 	}
 
-	func winning(board: [Int], player: Int) -> Bool {
+	func winningCombination(board: [Int], player: Int) -> Bool {
 		if  (board[0] == player && board[1] == player && board[2] == player) ||
-				(board[3] == player && board[4] == player && board[5] == player) ||
-				(board[6] == player && board[7] == player && board[8] == player) ||
-				(board[0] == player && board[3] == player && board[6] == player) ||
-				(board[1] == player && board[4] == player && board[7] == player) ||
-				(board[2] == player && board[5] == player && board[8] == player) ||
-				(board[0] == player && board[4] == player && board[8] == player) ||
-				(board[2] == player && board[4] == player && board[6] == player) {
+			(board[3] == player && board[4] == player && board[5] == player) ||
+			(board[6] == player && board[7] == player && board[8] == player) ||
+			(board[0] == player && board[3] == player && board[6] == player) ||
+			(board[1] == player && board[4] == player && board[7] == player) ||
+			(board[2] == player && board[5] == player && board[8] == player) ||
+			(board[0] == player && board[4] == player && board[8] == player) ||
+			(board[2] == player && board[4] == player && board[6] == player) {
 			return true
 		} else {
 			return false
@@ -42,9 +37,9 @@ public class ComputerMovesAlgorithm {
 
 		let availSpots = emptyIndices(board: newNewBoard)
 
-		if winning(board: newNewBoard, player: huPlayer) {
+		if winningCombination(board: newNewBoard, player: human) {
 			return Move(score: -10)
-		} else if winning(board: newNewBoard, player: aiPlayer) {
+		} else if winningCombination(board: newNewBoard, player: computer) {
 			return Move(score: 10)
 		} else if availSpots.count == 0 {
 			return Move(score: 0)
@@ -57,11 +52,11 @@ public class ComputerMovesAlgorithm {
 			move.index = newNewBoard[availSpots[counter]]
 			newNewBoard[availSpots[counter]] = player
 
-			if player == aiPlayer {
-				let result = minimax(newBoard: newNewBoard, player: huPlayer)
+			if player == computer {
+				let result = minimax(newBoard: newNewBoard, player: human)
 				move.score = result.score
 			} else {
-				let result = minimax(newBoard: newNewBoard, player: aiPlayer)
+				let result = minimax(newBoard: newNewBoard, player: computer)
 				move.score = result.score
 			}
 
@@ -70,7 +65,7 @@ public class ComputerMovesAlgorithm {
 		}
 
 		var bestMove = Int()
-		if player == aiPlayer {
+		if player == computer {
 			var bestScore = -10000
 			for counter in 0...moves.count - 1  where (moves[counter].score) > bestScore {
 				bestScore = (moves[counter].score)
@@ -190,7 +185,6 @@ public class ComputerMovesAlgorithm {
 			newArray.append(counter)
 			counter += 1
 		}
-
 		return newArray
 	}
 }
