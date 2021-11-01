@@ -31,7 +31,7 @@ class ComplexityViewController: UIViewController, ComplexityViewControllerViewDe
 		self.view.layer.shadowRadius = 20
 		self.view.layer.shadowOpacity = 1
 		self.view.layer.shadowOffset = .zero
-		self.view.backgroundColor = .clear
+		self.view.backgroundColor = .lightGray
 		self.view.addSubview(newView)
 		newView.delegate = self
 		constraintsInit()

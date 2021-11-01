@@ -27,9 +27,8 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	}
 
 	func playSinglePlayer() {
-		let complexityVC = ComplexityViewController()
-		complexityVC.modalTransitionStyle = .coverVertical
-		present(complexityVC, animated: true, completion: nil)
+		self.navigationController?.pushViewController(ComplexityViewController(),
+													  animated: true)
 	}
 
 	func playMultiplayerButton() {

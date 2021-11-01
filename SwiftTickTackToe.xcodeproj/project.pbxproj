@@ -17,6 +17,8 @@
 		165248C22726E88A00CA943C /* GameboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C12726E88A00CA943C /* GameboardState.swift */; };
 		165248C42726EFD400CA943C /* ComputerMovesAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */; };
 		165248C62727033100CA943C /* ReviewGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C52727033100CA943C /* ReviewGameState.swift */; };
+		165FA8CE273026A100557E47 /* SwiftTickTackToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8CD273026A100557E47 /* SwiftTickTackToeTests.swift */; };
+		165FA8D62730272800557E47 /* ComputerMovesAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8D52730272800557E47 /* ComputerMovesAlgorithmTest.swift */; };
 		168B984F2714B90400A66B51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B984E2714B90400A66B51 /* MainViewController.swift */; };
 		168B98522714B95E00A66B51 /* GameboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98512714B95E00A66B51 /* GameboardView.swift */; };
 		168B98542714B97100A66B51 /* MainViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98532714B97100A66B51 /* MainViewControllerView.swift */; };
@@ -42,6 +44,16 @@
 		16F6A16D271732CF00F93B2F /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6A16C271732CF00F93B2F /* GameType.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		165FA8D0273026A100557E47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16C6313A2714B23B0040B47D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16C631412714B23B0040B47D;
+			remoteInfo = SwiftTickTackToe;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1613D4BE271AFA0E00517D25 /* ComputerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerState.swift; sourceTree = "<group>"; };
 		1613D4C0271B159A00517D25 /* ComputerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPosition.swift; sourceTree = "<group>"; };
@@ -53,6 +65,10 @@
 		165248C12726E88A00CA943C /* GameboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardState.swift; sourceTree = "<group>"; };
 		165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMovesAlgorithm.swift; sourceTree = "<group>"; };
 		165248C52727033100CA943C /* ReviewGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewGameState.swift; sourceTree = "<group>"; };
+		165FA8CB273026A100557E47 /* SwiftTickTackToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTickTackToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		165FA8CD273026A100557E47 /* SwiftTickTackToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTickTackToeTests.swift; sourceTree = "<group>"; };
+		165FA8CF273026A100557E47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		165FA8D52730272800557E47 /* ComputerMovesAlgorithmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMovesAlgorithmTest.swift; sourceTree = "<group>"; };
 		168B984E2714B90400A66B51 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		168B98512714B95E00A66B51 /* GameboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardView.swift; sourceTree = "<group>"; };
 		168B98532714B97100A66B51 /* MainViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerView.swift; sourceTree = "<group>"; };
@@ -81,6 +97,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		165FA8C8273026A100557E47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16C6313F2714B23B0040B47D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +114,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		165FA8CC273026A100557E47 /* SwiftTickTackToeTests */ = {
+			isa = PBXGroup;
+			children = (
+				165FA8D52730272800557E47 /* ComputerMovesAlgorithmTest.swift */,
+				165FA8CD273026A100557E47 /* SwiftTickTackToeTests.swift */,
+				165FA8CF273026A100557E47 /* Info.plist */,
+			);
+			path = SwiftTickTackToeTests;
+			sourceTree = "<group>";
+		};
 		168B984C2714B8AD00A66B51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				16C631442714B23B0040B47D /* SwiftTickTackToe */,
+				165FA8CC273026A100557E47 /* SwiftTickTackToeTests */,
 				16C631432714B23B0040B47D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				16C631422714B23B0040B47D /* SwiftTickTackToe.app */,
+				165FA8CB273026A100557E47 /* SwiftTickTackToeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +250,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		165FA8CA273026A100557E47 /* SwiftTickTackToeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 165FA8D2273026A100557E47 /* Build configuration list for PBXNativeTarget "SwiftTickTackToeTests" */;
+			buildPhases = (
+				165FA8C7273026A100557E47 /* Sources */,
+				165FA8C8273026A100557E47 /* Frameworks */,
+				165FA8C9273026A100557E47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				165FA8D1273026A100557E47 /* PBXTargetDependency */,
+			);
+			name = SwiftTickTackToeTests;
+			productName = SwiftTickTackToeTests;
+			productReference = 165FA8CB273026A100557E47 /* SwiftTickTackToeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		16C631412714B23B0040B47D /* SwiftTickTackToe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16C631562714B2400040B47D /* Build configuration list for PBXNativeTarget "SwiftTickTackToe" */;
@@ -242,6 +295,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					165FA8CA273026A100557E47 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 16C631412714B23B0040B47D;
+					};
 					16C631412714B23B0040B47D = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -261,11 +318,19 @@
 			projectRoot = "";
 			targets = (
 				16C631412714B23B0040B47D /* SwiftTickTackToe */,
+				165FA8CA273026A100557E47 /* SwiftTickTackToeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		165FA8C9273026A100557E47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16C631402714B23B0040B47D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,6 +364,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		165FA8C7273026A100557E47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				165FA8D62730272800557E47 /* ComputerMovesAlgorithmTest.swift in Sources */,
+				165FA8CE273026A100557E47 /* SwiftTickTackToeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16C6313E2714B23B0040B47D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +413,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		165FA8D1273026A100557E47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16C631412714B23B0040B47D /* SwiftTickTackToe */;
+			targetProxy = 165FA8D0273026A100557E47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		16C631502714B2400040B47D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -351,6 +433,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		165FA8D3273026A100557E47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = SwiftTickTackToeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.SwiftTickTackToeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftTickTackToe.app/SwiftTickTackToe";
+			};
+			name = Debug;
+		};
+		165FA8D4273026A100557E47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = SwiftTickTackToeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.SwiftTickTackToeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftTickTackToe.app/SwiftTickTackToe";
+			};
+			name = Release;
+		};
 		16C631542714B2400040B47D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -508,6 +630,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		165FA8D2273026A100557E47 /* Build configuration list for PBXNativeTarget "SwiftTickTackToeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				165FA8D3273026A100557E47 /* Debug */,
+				165FA8D4273026A100557E47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		16C6313D2714B23B0040B47D /* Build configuration list for PBXProject "SwiftTickTackToe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
