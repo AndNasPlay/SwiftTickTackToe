@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainViewController: UIViewController, MainViewControllerViewDelegate {
 
@@ -19,6 +20,7 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
+
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +29,7 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	}
 
 	func playSinglePlayer() {
+
 		self.navigationController?.pushViewController(ComplexityViewController(),
 													  animated: true)
 	}

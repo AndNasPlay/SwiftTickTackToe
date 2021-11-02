@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 public class GameViewController: UIViewController {
 
@@ -57,6 +58,7 @@ public class GameViewController: UIViewController {
 
 		gameboardView.onSelectPosition = { [weak self] position in
 			guard let self = self else { return }
+			AudioServicesPlaySystemSound(SystemSoundID(1306))
 			self.currentState.addMark(at: position)
 		}
 	}
@@ -69,6 +71,7 @@ public class GameViewController: UIViewController {
 	}
 
 	func goToNextState(_ state: GameState) {
+		AudioServicesPlaySystemSound(SystemSoundID(1306))
 		self.currentState = state
 	}
 

@@ -177,14 +177,4 @@ public class ComputerMovesAlgorithm {
 
 		return newArray
 	}
-
-	func returnIntOnGameboardPosition() -> [Int] {
-		var newArray: [Int] = []
-		var counter = 0
-		while counter < GameboardSize.rows * GameboardSize.columns {
-			newArray.append(counter)
-			counter += 1
-		}
-		return newArray
-	}
 }
