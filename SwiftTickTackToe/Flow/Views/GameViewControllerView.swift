@@ -11,19 +11,19 @@ class GameViewControllerView: UIView {
 
 	private(set) lazy var leadingTrailingLableAnchor: CGFloat = 20.0
 
-	private(set) lazy var topLableHeightAnchor: CGFloat = 20.0
+	private(set) lazy var topLableHeightAnchor: CGFloat = 23.0
 
 	private(set) lazy var topLableAnchor: CGFloat = 20.0
 
 	private(set) lazy var lableUIFontSize: CGFloat = 20.0
 
-	private(set) lazy var stackViewbuttonSpacing: CGFloat = 5.0
+	private(set) lazy var stackViewbuttonSpacing: CGFloat = 10.0
 
 	private(set) lazy var firstPlayerLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textColor = .boardLineColor
-		text.textAlignment = .center
+		text.textAlignment = .left
 		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "YOU"
 		return text
@@ -39,7 +39,7 @@ class GameViewControllerView: UIView {
 	private(set) lazy var secondPlayerLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
-		text.textAlignment = .center
+		text.textAlignment = .right
 		text.textColor = .boardLineColor
 		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "Computer"
@@ -59,7 +59,7 @@ class GameViewControllerView: UIView {
 		stackView.axis = .horizontal
 		stackView.alignment = .fill
 		stackView.spacing = stackViewbuttonSpacing
-		stackView.distribution = .fillEqually
+
 		return stackView
 	}()
 
@@ -69,7 +69,6 @@ class GameViewControllerView: UIView {
 		stackView.axis = .horizontal
 		stackView.alignment = .fill
 		stackView.spacing = stackViewbuttonSpacing
-		stackView.distribution = .fillEqually
 		return stackView
 	}()
 
@@ -102,8 +101,8 @@ class GameViewControllerView: UIView {
 		self.addSubview(secondPlayerStackView)
 		self.firstPlayerStackView.addArrangedSubview(firstPlayerMark)
 		self.firstPlayerStackView.addArrangedSubview(firstPlayerLable)
-		self.secondPlayerStackView.addArrangedSubview(secondPlayerMark)
 		self.secondPlayerStackView.addArrangedSubview(secondPlayerLable)
+		self.secondPlayerStackView.addArrangedSubview(secondPlayerMark)
 		self.addSubview(winLable)
 	}
 
@@ -118,12 +117,16 @@ class GameViewControllerView: UIView {
 												  constant: topLableAnchor),
 			firstPlayerStackView.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
+			firstPlayerMark.widthAnchor.constraint(equalToConstant: 23.0),
+
 			secondPlayerStackView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: leadingTrailingLableAnchor),
 			secondPlayerStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 														constant: -leadingTrailingLableAnchor),
 			secondPlayerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
 												   constant: topLableAnchor),
 			secondPlayerStackView.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
+
+			secondPlayerMark.widthAnchor.constraint(equalToConstant: 23.0),
 
 			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			winLable.topAnchor.constraint(equalTo: self.firstPlayerStackView.bottomAnchor,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 public class GameboardView: UIView {
 
@@ -53,6 +54,7 @@ public class GameboardView: UIView {
 		updateFrame(for: markView, at: position)
 		markViewForPosition[position] = markView
 		GameboardState.shared.addMove(gameboardPosition: position)
+		AudioServicesPlaySystemSound(SystemSoundID(1306))
 		addSubview(markView)
 	}
 

@@ -23,12 +23,11 @@ public class ComputerState: GameState {
 	public func begin() {
 		switch self.player {
 		case .first:
-			self.viewController.newView.firstPlayerLable.isHidden = false
-			self.viewController.newView.secondPlayerLable.isHidden = true
+			self.viewController.newView.firstPlayerStackView.isHidden = false
+			self.viewController.newView.secondPlayerStackView.isHidden = true
 		case .computer:
-			self.viewController.newView.firstPlayerLable.isHidden = true
-			self.viewController.newView.secondPlayerLable.isHidden = false
-			self.viewController.newView.secondPlayerLable.text = "Computer"
+			self.viewController.newView.firstPlayerStackView.isHidden = true
+			self.viewController.newView.secondPlayerStackView.isHidden = false
 			computerMakeStep()
 		default:
 			return

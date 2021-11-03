@@ -22,11 +22,12 @@ class PlayerState: GameState {
 	func begin() {
 		switch player {
 		case .first:
-			gameViewController?.newView.firstPlayerLable.isHidden = false
-			gameViewController?.newView.secondPlayerLable.isHidden = true
+			gameViewController?.newView.firstPlayerStackView.isHidden = false
+			gameViewController?.newView.secondPlayerStackView.isHidden = true
 		case .second:
-			gameViewController?.newView.firstPlayerLable.isHidden = true
-			gameViewController?.newView.secondPlayerLable.isHidden = false
+			gameViewController?.newView.firstPlayerStackView.isHidden = true
+			gameViewController?.newView.secondPlayerStackView.isHidden = false
+			gameViewController?.newView.secondPlayerLable.text = "2nd player"
 		default: break
 		}
 		gameViewController?.newView.winLable.isHidden = true

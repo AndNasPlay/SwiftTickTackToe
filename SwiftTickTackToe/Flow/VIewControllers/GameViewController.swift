@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 public class GameViewController: UIViewController {
 
@@ -18,13 +17,25 @@ public class GameViewController: UIViewController {
 
 	private(set) var gameType: GameType = .multiplayer
 
-	private(set) var complexity: SinglePlayerGameComplexity = .easy
+	private(set) var complexity: SinglePlayerGameComplexity
 
 	private(set) lazy var referee = Referee(gameboard: self.gameBoard)
 
 	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 20.0
 
 	private(set) lazy var topAnchorGameBoard: CGFloat = 50.0
+
+	private(set) lazy var refreshButton: UIBarButtonItem = UIBarButtonItem(
+		image: UIImage(named: "restart"),
+		style: .done,
+		target: self,
+		action: #selector(handleRestartTouchUpInseide))
+
+	private(set) lazy var backButton: UIBarButtonItem = UIBarButtonItem(
+		image: UIImage(named: "backImg"),
+		style: .done,
+		target: self,
+		action: #selector(handleBackTouchUpInseide))
 
 	private var currentState: GameState! {
 		didSet {
@@ -47,18 +58,18 @@ public class GameViewController: UIViewController {
 		view = newView
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
-		navigationController?.navigationBar.barTintColor = .lightGray
-		navigationItem.rightBarButtonItem = UIBarButtonItem(
-			barButtonSystemItem: .refresh,
-			target: self,
-			action: #selector(handleRestartTouchUpInseide)
-		)
+		navigationController?.navigationBar.barTintColor = .viewBackgroundColor
+		navigationItem.rightBarButtonItem = refreshButton
+		navigationItem.rightBarButtonItem!.tintColor = .brown
+
+		navigationItem.leftBarButtonItem = backButton
+		navigationItem.leftBarButtonItem!.tintColor = .brown
+
 		constraintsInit()
 		setFirstState()
 
 		gameboardView.onSelectPosition = { [weak self] position in
 			guard let self = self else { return }
-			AudioServicesPlaySystemSound(SystemSoundID(1306))
 			self.currentState.addMark(at: position)
 		}
 	}
@@ -71,7 +82,6 @@ public class GameViewController: UIViewController {
 	}
 
 	func goToNextState(_ state: GameState) {
-		AudioServicesPlaySystemSound(SystemSoundID(1306))
 		self.currentState = state
 	}
 
@@ -93,5 +103,9 @@ public class GameViewController: UIViewController {
 		gameBoard.clear()
 		GameboardState.shared.clear()
 		setFirstState()
+	}
+
+	@objc func handleBackTouchUpInseide() {
+		self.navigationController?.popViewController(animated: true)
 	}
 }

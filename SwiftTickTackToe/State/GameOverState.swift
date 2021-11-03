@@ -29,8 +29,8 @@ class GameOverState: GameState {
 		} else {
 			gameViewController?.newView.winLable.text = "No winner"
 		}
-		gameViewController?.newView.firstPlayerLable.isHidden = true
-		gameViewController?.newView.secondPlayerLable.isHidden = true
+		gameViewController?.newView.firstPlayerStackView.isHidden = true
+		gameViewController?.newView.secondPlayerStackView.isHidden = true
 	}
 
 	func addMark(at position: GameboardPosition) { }
