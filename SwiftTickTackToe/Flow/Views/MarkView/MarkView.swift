@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class MarkView: UIView, Copying {
+public class MarkView: UIView {
 
 	public var lineColor: UIColor = .xViewColor
 

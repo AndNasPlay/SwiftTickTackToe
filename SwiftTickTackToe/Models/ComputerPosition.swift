@@ -112,13 +112,13 @@ public class ComputerPosition {
 
 	func findRandomStep(gameboard: Gameboard) -> GameboardPosition {
 
-		var column: Int = Int.random(in: 0..<3)
-		var row: Int = Int.random(in: 0..<3)
+		var column: Int = Int.random(in: 0..<GameboardSize.columns)
+		var row: Int = Int.random(in: 0..<GameboardSize.rows)
 		var randomPosition = GameboardPosition(column: column, row: row)
 
 		while gameboard.contains(at: randomPosition) != nil {
-			column = Int.random(in: 0..<3)
-			row = Int.random(in: 0..<3)
+			column = Int.random(in: 0..<GameboardSize.columns)
+			row = Int.random(in: 0..<GameboardSize.rows)
 			randomPosition = GameboardPosition(column: column, row: row)
 		}
 		return randomPosition

@@ -22,12 +22,12 @@ class GameOverState: GameState {
 
 	func begin() {
 
-		gameViewController?.newView.winLable.isHidden = false
-
 		if let winner = winner {
-			gameViewController?.newView.winLable.text = getWinnerName(from: winner) + " won"
+			gameViewController?.congratulationPopUp()
+			gameViewController?.congratulatoryViewController.newView.winLable.text = getWinnerName(from: winner) + " won"
 		} else {
-			gameViewController?.newView.winLable.text = "No winner"
+			gameViewController?.congratulatoryViewController.newView.winLable.text = "No winner"
+			gameViewController?.congratulationPopUp()
 		}
 		gameViewController?.newView.firstPlayerStackView.isHidden = true
 		gameViewController?.newView.secondPlayerStackView.isHidden = true

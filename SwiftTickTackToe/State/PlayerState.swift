@@ -30,7 +30,6 @@ class PlayerState: GameState {
 			gameViewController?.newView.secondPlayerLable.text = "2nd player"
 		default: break
 		}
-		gameViewController?.newView.winLable.isHidden = true
 	}
 
 	func addMark(at position: GameboardPosition) {

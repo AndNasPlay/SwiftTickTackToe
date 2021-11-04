@@ -32,7 +32,6 @@ public class ComputerState: GameState {
 		default:
 			return
 		}
-		self.viewController.newView.winLable.isHidden = true
 	}
 
 	public func addMark(at position: GameboardPosition) {

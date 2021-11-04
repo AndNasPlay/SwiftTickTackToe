@@ -30,7 +30,6 @@
 		16A1679F2715E584007E63FE /* MarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1679E2715E584007E63FE /* MarkView.swift */; };
 		16A167A12715E5BF007E63FE /* OView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167A02715E5BF007E63FE /* OView.swift */; };
 		16A167A32715E5D7007E63FE /* XView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167A22715E5D7007E63FE /* XView.swift */; };
-		16A167A52715E604007E63FE /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167A42715E604007E63FE /* Copying.swift */; };
 		16A167A72715E63B007E63FE /* Referee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167A62715E63B007E63FE /* Referee.swift */; };
 		16A167AA2715E770007E63FE /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167A92715E770007E63FE /* GameState.swift */; };
 		16A167AC2715E779007E63FE /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A167AB2715E779007E63FE /* PlayerState.swift */; };
@@ -80,7 +79,6 @@
 		16A1679E2715E584007E63FE /* MarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkView.swift; sourceTree = "<group>"; };
 		16A167A02715E5BF007E63FE /* OView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OView.swift; sourceTree = "<group>"; };
 		16A167A22715E5D7007E63FE /* XView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XView.swift; sourceTree = "<group>"; };
-		16A167A42715E604007E63FE /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
 		16A167A62715E63B007E63FE /* Referee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Referee.swift; sourceTree = "<group>"; };
 		16A167A92715E770007E63FE /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		16A167AB2715E779007E63FE /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 			children = (
 				16C631472714B23B0040B47D /* SceneDelegate.swift */,
 				16A167A62715E63B007E63FE /* Referee.swift */,
-				16A167A42715E604007E63FE /* Copying.swift */,
 				165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */,
 			);
 			path = "Business Logic";
@@ -392,7 +389,6 @@
 				16A167A72715E63B007E63FE /* Referee.swift in Sources */,
 				16A167992715E4EE007E63FE /* GameboardSize.swift in Sources */,
 				16A167AA2715E770007E63FE /* GameState.swift in Sources */,
-				16A167A52715E604007E63FE /* Copying.swift in Sources */,
 				16A167AC2715E779007E63FE /* PlayerState.swift in Sources */,
 				168B98562714B97E00A66B51 /* GameViewControllerView.swift in Sources */,
 				168B98522714B95E00A66B51 /* GameboardView.swift in Sources */,

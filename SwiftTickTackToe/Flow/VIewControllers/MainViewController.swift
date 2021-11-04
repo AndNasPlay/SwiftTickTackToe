@@ -31,14 +31,10 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	}
 
 	func playSinglePlayer() {
-		let newVc = CongratulatoryViewController()
-		newVc.modalPresentationStyle = .overCurrentContext
-		newVc.modalTransitionStyle = .crossDissolve
-		present(newVc, animated: true, completion: nil)
-//		self.navigationController?.pushViewController(GameViewController(
-//														gameMode: .singlePlayer,
-//														complexity: complexity),
-//													  animated: true)
+		self.navigationController?.pushViewController(GameViewController(
+														gameMode: .singlePlayer,
+														complexity: complexity),
+													  animated: true)
 	}
 
 	func playMultiplayerButton() {

@@ -13,6 +13,8 @@ class GameViewControllerView: UIView {
 
 	private(set) lazy var topLableHeightAnchor: CGFloat = 23.0
 
+	private(set) lazy var lableWidthAnchor: CGFloat = 23.0
+
 	private(set) lazy var topLableAnchor: CGFloat = 20.0
 
 	private(set) lazy var lableUIFontSize: CGFloat = 20.0
@@ -72,16 +74,6 @@ class GameViewControllerView: UIView {
 		return stackView
 	}()
 
-	private(set) lazy var winLable: UILabel = {
-		let text = UILabel()
-		text.translatesAutoresizingMaskIntoConstraints = false
-		text.textAlignment = .center
-		text.textColor = .black
-		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
-		text.text = "win lable"
-		return text
-	}()
-
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.backgroundColor = .viewBackgroundColor
@@ -103,7 +95,6 @@ class GameViewControllerView: UIView {
 		self.firstPlayerStackView.addArrangedSubview(firstPlayerLable)
 		self.secondPlayerStackView.addArrangedSubview(secondPlayerLable)
 		self.secondPlayerStackView.addArrangedSubview(secondPlayerMark)
-		self.addSubview(winLable)
 	}
 
 	func constraintsInit() {
@@ -117,7 +108,7 @@ class GameViewControllerView: UIView {
 												  constant: topLableAnchor),
 			firstPlayerStackView.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
-			firstPlayerMark.widthAnchor.constraint(equalToConstant: 23.0),
+			firstPlayerMark.widthAnchor.constraint(equalToConstant: lableWidthAnchor),
 
 			secondPlayerStackView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: leadingTrailingLableAnchor),
 			secondPlayerStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
@@ -126,12 +117,7 @@ class GameViewControllerView: UIView {
 												   constant: topLableAnchor),
 			secondPlayerStackView.heightAnchor.constraint(equalToConstant: topLableHeightAnchor),
 
-			secondPlayerMark.widthAnchor.constraint(equalToConstant: 23.0),
-
-			winLable.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			winLable.topAnchor.constraint(equalTo: self.firstPlayerStackView.bottomAnchor,
-										  constant: topLableAnchor),
-			winLable.heightAnchor.constraint(equalToConstant: topLableHeightAnchor)
+			secondPlayerMark.widthAnchor.constraint(equalToConstant: lableWidthAnchor)
 		])
 	}
 }

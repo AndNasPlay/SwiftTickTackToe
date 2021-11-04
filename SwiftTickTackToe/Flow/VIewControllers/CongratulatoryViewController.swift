@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol CongratulatoryDelegate: AnyObject {
+	func restart()
+}
+
 class CongratulatoryViewController: UIViewController, CongratulatoryViewControllerViewDelegate {
 
 	var newView = CongratulatoryUIView()
+
+	weak var delegate: CongratulatoryDelegate?
 
 	private(set) lazy var newViewLeadingTrailingAnchor: CGFloat = 60.0
 
@@ -38,6 +44,8 @@ class CongratulatoryViewController: UIViewController, CongratulatoryViewControll
 	}
 
 	func done() {
-		self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: true) {
+			self.delegate?.restart()
+		}
 	}
 }

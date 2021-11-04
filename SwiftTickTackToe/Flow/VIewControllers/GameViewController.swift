@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class GameViewController: UIViewController {
+public class GameViewController: UIViewController, CongratulatoryDelegate {
 
 	var newView = GameViewControllerView()
 
@@ -15,15 +15,17 @@ public class GameViewController: UIViewController {
 
 	public var gameboardView = GameboardView()
 
+	private(set) lazy var congratulatoryViewController = CongratulatoryViewController()
+
 	private(set) var gameType: GameType = .multiplayer
 
 	private(set) var complexity: SinglePlayerGameComplexity
 
 	private(set) lazy var referee = Referee(gameboard: self.gameBoard)
 
-	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 20.0
+	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 30.0
 
-	private(set) lazy var topAnchorGameBoard: CGFloat = 50.0
+	private(set) lazy var topAnchorGameBoard: CGFloat = 80.0
 
 	private(set) lazy var refreshButton: UIBarButtonItem = UIBarButtonItem(
 		image: UIImage(named: "restart"),
@@ -55,6 +57,7 @@ public class GameViewController: UIViewController {
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
+		self.congratulatoryViewController.delegate = self
 		view = newView
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
@@ -85,6 +88,12 @@ public class GameViewController: UIViewController {
 		self.currentState = state
 	}
 
+	func congratulationPopUp() {
+		congratulatoryViewController.modalPresentationStyle = .overCurrentContext
+		congratulatoryViewController.modalTransitionStyle = .crossDissolve
+		present(congratulatoryViewController, animated: true, completion: nil)
+	}
+
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
@@ -93,9 +102,12 @@ public class GameViewController: UIViewController {
 			gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor,
 													constant: -leadingTrailingGameBoardAnchor),
 			gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor),
-			gameboardView.topAnchor.constraint(equalTo: self.newView.winLable.bottomAnchor,
-											   constant: topAnchorGameBoard)
+			gameboardView.topAnchor.constraint(equalTo: self.newView.firstPlayerLable.bottomAnchor, constant: topAnchorGameBoard)
 		])
+	}
+
+	func restart() {
+		setFirstState()
 	}
 
 	@objc func handleRestartTouchUpInseide() {
