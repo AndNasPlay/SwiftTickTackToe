@@ -27,17 +27,22 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 
 	private(set) lazy var topAnchorGameBoard: CGFloat = 80.0
 
-	private(set) lazy var refreshButton: UIBarButtonItem = UIBarButtonItem(
-		image: UIImage(named: "restart"),
-		style: .done,
-		target: self,
-		action: #selector(handleRestartTouchUpInseide))
+	private(set) lazy var backButtonForNavBar: UIButton = {
+		let button = UIButton(type: .custom)
+		button.setImage(UIImage(named: "backImg"), for: .normal)
+		button.addTarget(self, action: #selector(handleBackTouchUpInseide), for: .touchUpInside)
+		return button
+	}()
 
-	private(set) lazy var backButton: UIBarButtonItem = UIBarButtonItem(
-		image: UIImage(named: "backImg"),
-		style: .done,
-		target: self,
-		action: #selector(handleBackTouchUpInseide))
+	private(set) lazy var refreshButtonForNavBar: UIButton = {
+		let button = UIButton(type: .custom)
+		button.setImage(UIImage(named: "restart"), for: .normal)
+		button.addTarget(self, action: #selector(handleRestartTouchUpInseide), for: .touchUpInside)
+		return button
+	}()
+
+	private(set) lazy var leftBarButton = UIBarButtonItem(customView: backButtonForNavBar)
+	private(set) lazy var rightBarButton = UIBarButtonItem(customView: refreshButtonForNavBar)
 
 	private var currentState: GameState! {
 		didSet {
@@ -62,11 +67,9 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 		view.addSubview(gameboardView)
 		navigationController?.navigationBar.isHidden = false
 		navigationController?.navigationBar.barTintColor = .viewBackgroundColor
-		navigationItem.rightBarButtonItem = refreshButton
-		navigationItem.rightBarButtonItem!.tintColor = .brown
 
-		navigationItem.leftBarButtonItem = backButton
-		navigationItem.leftBarButtonItem!.tintColor = .brown
+		navigationItem.rightBarButtonItem = rightBarButton
+		navigationItem.leftBarButtonItem = leftBarButton
 
 		constraintsInit()
 		setFirstState()
@@ -95,15 +98,20 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 	}
 
 	func constraintsInit() {
-		NSLayoutConstraint.activate([
+		leftBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
+		leftBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
 
-			gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor,
-												   constant: leadingTrailingGameBoardAnchor),
-			gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor,
-													constant: -leadingTrailingGameBoardAnchor),
-			gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor),
-			gameboardView.topAnchor.constraint(equalTo: self.newView.firstPlayerLable.bottomAnchor, constant: topAnchorGameBoard)
-		])
+		rightBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
+		rightBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+
+		gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor,
+											   constant: leadingTrailingGameBoardAnchor).isActive = true
+
+		gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor,
+												constant: -leadingTrailingGameBoardAnchor).isActive = true
+		gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor).isActive = true
+		gameboardView.topAnchor.constraint(equalTo: self.newView.firstPlayerLable.bottomAnchor,
+										   constant: topAnchorGameBoard).isActive = true
 	}
 
 	func restart() {

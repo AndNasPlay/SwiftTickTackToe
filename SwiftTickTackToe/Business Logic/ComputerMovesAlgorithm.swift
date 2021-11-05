@@ -66,14 +66,14 @@ public class ComputerMovesAlgorithm {
 
 		var bestMove = Int()
 		if player == computer {
-			var bestScore = -10000
+			var bestScore = -1000
 			for counter in 0...moves.count - 1  where (moves[counter].score) > bestScore {
 				bestScore = (moves[counter].score)
 				bestMove = counter
 			}
 		} else {
 
-			var bestScore = 10000
+			var bestScore = 1000
 			for counter in 0...moves.count - 1 where (moves[counter].score) < bestScore {
 				bestScore = (moves[counter].score)
 				bestMove = counter

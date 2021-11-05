@@ -31,7 +31,7 @@ class CongratulatoryUIView: UIView {
 
 	private(set) lazy var winLableHeightAnchor: CGFloat = 40.0
 
-	private(set) lazy var logoImageViewDoneButtonTopAnchor: CGFloat = 30.0
+	private(set) lazy var logoImageViewDoneButtonTopAnchor: CGFloat = 40.0
 
 	private(set) lazy var doneButtonBottomAnchor: CGFloat = 40.0
 

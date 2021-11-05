@@ -134,8 +134,8 @@ class MainViewControllerView: UIView {
 												   constant: leadingTrailingAnchorLogo),
 			logoImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 													constant: -leadingTrailingAnchorLogo),
+			logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15),
 			logoImageView.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -centerYAnchorStackViewIndent),
-			logoImageView.heightAnchor.constraint(equalToConstant: logoHeightAnchor),
 
 			buttonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
 													  constant: leadingTrailingAnchorStackView),
@@ -151,10 +151,10 @@ class MainViewControllerView: UIView {
 			complexityUIVIew.heightAnchor.constraint(equalToConstant: switcherHeightAnchor),
 			complexityUIVIew.widthAnchor.constraint(equalToConstant: leadingTrailingAnchorStackView * 2),
 
-			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor),
-			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor),
-			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor),
-			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor)
+			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor, constant: -5.0),
+			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor, constant: 5.0),
+			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor, constant: -5.0),
+			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor, constant: 5.0)
 		])
 	}
 

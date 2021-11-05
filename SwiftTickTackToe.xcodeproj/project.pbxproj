@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,8 @@
 		165248C22726E88A00CA943C /* GameboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C12726E88A00CA943C /* GameboardState.swift */; };
 		165248C42726EFD400CA943C /* ComputerMovesAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C32726EFD400CA943C /* ComputerMovesAlgorithm.swift */; };
 		165248C62727033100CA943C /* ReviewGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165248C52727033100CA943C /* ReviewGameState.swift */; };
-		165FA8CE273026A100557E47 /* SwiftTickTackToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8CD273026A100557E47 /* SwiftTickTackToeTests.swift */; };
-		165FA8D62730272800557E47 /* ComputerMovesAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8D52730272800557E47 /* ComputerMovesAlgorithmTest.swift */; };
+		165FA8CE273026A100557E47 /* SwiftTickTackToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8CD273026A100557E47 /* SwiftTickTackToeTests.swift */; platformFilter = ios; };
+		165FA8D62730272800557E47 /* ComputerMovesAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165FA8D52730272800557E47 /* ComputerMovesAlgorithmTest.swift */; platformFilter = ios; };
 		168B984F2714B90400A66B51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B984E2714B90400A66B51 /* MainViewController.swift */; };
 		168B98522714B95E00A66B51 /* GameboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98512714B95E00A66B51 /* GameboardView.swift */; };
 		168B98542714B97100A66B51 /* MainViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B98532714B97100A66B51 /* MainViewControllerView.swift */; };
@@ -412,6 +412,7 @@
 /* Begin PBXTargetDependency section */
 		165FA8D1273026A100557E47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 16C631412714B23B0040B47D /* SwiftTickTackToe */;
 			targetProxy = 165FA8D0273026A100557E47 /* PBXContainerItemProxy */;
 		};
@@ -520,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -575,7 +576,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
