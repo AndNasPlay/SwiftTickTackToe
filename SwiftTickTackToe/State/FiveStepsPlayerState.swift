@@ -1,13 +1,13 @@
 //
-//  PlayerState.swift
+//  FiveStepsPlayerState.swift
 //  SwiftTickTackToe
 //
-//  Created by Андрей Щекатунов on 12.10.2021.
+//  Created by Андрей Щекатунов on 05.11.2021.
 //
 
 import Foundation
 
-class PlayerState: GameState {
+class FiveStepsPlayerState: GameState {
 
 	var isCompleted: Bool = false
 
@@ -35,9 +35,7 @@ class PlayerState: GameState {
 	func addMark(at position: GameboardPosition) {
 
 		guard let gameBoardView = gameViewController?.gameboardView, gameBoardView.canPlaceMarkView(at: position)
-		else {
-			return
-		}
+		else { return }
 
 		let markView: MarkView
 		switch self.player {
@@ -59,7 +57,7 @@ class PlayerState: GameState {
 	private func nextStep() {
 		let nextStepState = PlayerState(player: player.next(gameType: gameViewController!.gameType),
 										gameViewController: gameViewController!)
-		let state = ReviewGameState(viewController: gameViewController!, nextState: nextStepState)
+		let state = FiveStepsReviewGameState(viewController: gameViewController!, nextState: nextStepState)
 		gameViewController!.goToNextState(state)
 	}
 }

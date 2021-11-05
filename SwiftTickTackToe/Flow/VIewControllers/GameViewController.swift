@@ -25,6 +25,8 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 
 	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 30.0
 
+	private(set) lazy var navBarButtonWidthHeightAnchor: CGFloat = 35.0
+
 	private(set) lazy var topAnchorGameBoard: CGFloat = 80.0
 
 	private(set) lazy var backButtonForNavBar: UIButton = {
@@ -98,15 +100,14 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 	}
 
 	func constraintsInit() {
-		leftBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
-		leftBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+		leftBarButton.customView?.widthAnchor.constraint(equalToConstant: navBarButtonWidthHeightAnchor).isActive = true
+		leftBarButton.customView?.heightAnchor.constraint(equalToConstant: navBarButtonWidthHeightAnchor).isActive = true
 
-		rightBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
-		rightBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+		rightBarButton.customView?.widthAnchor.constraint(equalToConstant: navBarButtonWidthHeightAnchor).isActive = true
+		rightBarButton.customView?.heightAnchor.constraint(equalToConstant: navBarButtonWidthHeightAnchor).isActive = true
 
 		gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor,
 											   constant: leadingTrailingGameBoardAnchor).isActive = true
-
 		gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor,
 												constant: -leadingTrailingGameBoardAnchor).isActive = true
 		gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor).isActive = true
@@ -119,9 +120,6 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 	}
 
 	@objc func handleRestartTouchUpInseide() {
-		gameboardView.clear()
-		gameBoard.clear()
-		GameboardState.shared.clear()
 		setFirstState()
 	}
 

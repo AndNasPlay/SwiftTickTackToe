@@ -11,5 +11,6 @@ public enum GameType: CaseIterable {
 
 	case singlePlayer
 	case multiplayer
+	case fiveSteps
 
 }

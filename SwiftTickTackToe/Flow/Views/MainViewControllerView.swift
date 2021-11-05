@@ -10,6 +10,7 @@ import UIKit
 protocol MainViewControllerViewDelegate: AnyObject {
 	func playSinglePlayer()
 	func playMultiplayerButton()
+	func playFiveStepsButton()
 	func selectComplexity(_ sender: UISegmentedControl)
 }
 
@@ -31,7 +32,7 @@ class MainViewControllerView: UIView {
 
 	private(set) lazy var centerYAnchorStackViewIndent: CGFloat = 20.0
 
-	private(set) lazy var stackViewHeightAnchor: CGFloat = 140.0
+	private(set) lazy var stackViewHeightAnchor: CGFloat = 210.0
 
 	private(set) lazy var buttonsFontSize: CGFloat = 20.0
 
@@ -50,7 +51,7 @@ class MainViewControllerView: UIView {
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
 		button.backgroundColor = .buttonsAndOViewColor
-		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4
+		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 8
 		return button
 	}()
 
@@ -61,7 +62,18 @@ class MainViewControllerView: UIView {
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
 		button.backgroundColor = .buttonsAndOViewColor
-		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4
+		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 8
+		return button
+	}()
+
+	private(set) lazy var fiveStepsButton: UIButton = {
+		var button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setTitle("5 * 5", for: .normal)
+		button.setTitleColor(.white, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
+		button.backgroundColor = .buttonsAndOViewColor
+		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 8
 		return button
 	}()
 
@@ -116,11 +128,15 @@ class MainViewControllerView: UIView {
 		self.complexityUIVIew.addSubview(complexitySwitch)
 		buttonsStackView.addArrangedSubview(multiplayerButton)
 		buttonsStackView.addArrangedSubview(singlePlayer)
+		buttonsStackView.addArrangedSubview(fiveStepsButton)
 		singlePlayer.addTarget(self,
 							   action: #selector(handlePlaySinglePlayerTouchUpInseide),
 							   for: .touchUpInside)
 		multiplayerButton.addTarget(self,
 									action: #selector(handlePlayMultiplayerTouchUpInseide),
+									for: .touchUpInside)
+		fiveStepsButton.addTarget(self,
+									action: #selector(handlePlayFiveStepsTouchUpInseide),
 									for: .touchUpInside)
 		complexitySwitch.addTarget(self,
 								   action: #selector(handleSelectComplexity(_:)),
@@ -164,6 +180,10 @@ class MainViewControllerView: UIView {
 
 	@objc func handlePlaySinglePlayerTouchUpInseide() {
 		delegate?.playSinglePlayer()
+	}
+
+	@objc func handlePlayFiveStepsTouchUpInseide() {
+		delegate?.playFiveStepsButton()
 	}
 
 	@objc func handleSelectComplexity(_ sender: UISegmentedControl) {

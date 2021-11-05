@@ -1,13 +1,13 @@
 //
-//  ReviewGameState.swift
+//  FiveStepsReviewGameState.swift
 //  SwiftTickTackToe
 //
-//  Created by Андрей Щекатунов on 25.10.2021.
+//  Created by Андрей Щекатунов on 05.11.2021.
 //
 
 import Foundation
 
-public class ReviewGameState: GameState {
+public class FiveStepsReviewGameState: GameState {
 
 	public var isCompleted: Bool = false
 	private var nextState: GameState

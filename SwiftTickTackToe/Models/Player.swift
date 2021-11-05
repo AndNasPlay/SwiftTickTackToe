@@ -26,6 +26,22 @@ public enum Player: CaseIterable {
 			case .second: return .first
 			default: return .first
 			}
+		case .fiveSteps:
+			switch self {
+			case .first:
+				if GameboardState.shared.allGameboardPositions.count <= 4 {
+					return .first
+				} else {
+					return .second
+				}
+			case .second:
+				if GameboardState.shared.allGameboardPositions.count > 4 {
+					return .second
+				} else {
+					return .first
+				}
+			default: return .first
+			}
 		}
 	}
 }

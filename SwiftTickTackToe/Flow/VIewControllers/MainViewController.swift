@@ -22,7 +22,6 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
-
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +39,13 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	func playMultiplayerButton() {
 		self.navigationController?.pushViewController(GameViewController(
 														gameMode: .multiplayer,
+														complexity: complexity),
+													  animated: true)
+	}
+
+	func playFiveStepsButton() {
+		self.navigationController?.pushViewController(GameViewController(
+														gameMode: .fiveSteps,
 														complexity: complexity),
 													  animated: true)
 	}
