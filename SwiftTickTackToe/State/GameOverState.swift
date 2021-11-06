@@ -24,7 +24,7 @@ class GameOverState: GameState {
 
 		if let winner = winner {
 			gameViewController?.congratulationPopUp()
-			gameViewController?.congratulatoryViewController.newView.winLable.text = getWinnerName(from: winner) + " won"
+			gameViewController?.congratulatoryViewController.newView.winLable.text = getWinnerName(from: winner) + " WON!"
 		} else {
 			gameViewController?.congratulatoryViewController.newView.winLable.text = "No winner"
 			gameViewController?.congratulationPopUp()
@@ -38,11 +38,11 @@ class GameOverState: GameState {
 	func getWinnerName(from: Player) -> String {
 		switch winner {
 		case .first:
-			return "You"
+			return "YOU"
 		case .second:
-			return "2nd player"
+			return "RIVAL"
 		case .computer:
-			return "Computer"
+			return "RIVAL"
 		case .none:
 			return "There is no winner"
 		}

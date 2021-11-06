@@ -15,11 +15,7 @@ class CongratulatoryUIView: UIView {
 
 	weak var delegate: CongratulatoryViewControllerViewDelegate?
 
-	private(set) lazy var stackViewbuttonSpacing: CGFloat = 20.0
-
 	private(set) lazy var leadingTrailingAnchorStackView: CGFloat = 20.0
-
-	private(set) lazy var leadingTrailingAnchorLogo: CGFloat = 40.0
 
 	private(set) lazy var leadingTrailingAnchorWinLable: CGFloat = 40.0
 
@@ -27,13 +23,17 @@ class CongratulatoryUIView: UIView {
 
 	private(set) lazy var buttonFontSize: CGFloat = 25.0
 
-	private(set) lazy var winLableTopAnchor: CGFloat = 20.0
+	private(set) lazy var winLableLogoTopAnchor: CGFloat = 40.0
 
-	private(set) lazy var winLableHeightAnchor: CGFloat = 40.0
+	private(set) lazy var winLableHeightAnchor: CGFloat = 25.0
 
-	private(set) lazy var logoImageViewDoneButtonTopAnchor: CGFloat = 40.0
+	private(set) lazy var doneButtonBottomAnchor: CGFloat = 20.0
 
-	private(set) lazy var doneButtonBottomAnchor: CGFloat = 40.0
+	private(set) lazy var logoImageTopAnchor: CGFloat = 30.0
+
+	private(set) lazy var logoImageViewHeightAnchor: CGFloat = 150.0
+
+	private(set) lazy var logoImageViewWidthAnchor: CGFloat = 180.0
 
 	private(set) lazy var winLable: UILabel = {
 		let text = UILabel()
@@ -41,7 +41,7 @@ class CongratulatoryUIView: UIView {
 		text.textColor = .buttonsAndOViewColor
 		text.textAlignment = .center
 		text.font = UIFont.boldSystemFont(ofSize: buttonFontSize)
-		text.text = "YOU WIN!"
+		text.text = "YOU WON!"
 		return text
 	}()
 
@@ -92,27 +92,26 @@ class CongratulatoryUIView: UIView {
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			winLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: winLableTopAnchor),
+			winLable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: winLableLogoTopAnchor),
 			winLable.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
 												   constant: leadingTrailingAnchorWinLable),
 			winLable.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 													constant: -leadingTrailingAnchorWinLable),
 			winLable.heightAnchor.constraint(equalToConstant: winLableHeightAnchor),
 
-			logoImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-												   constant: leadingTrailingAnchorLogo),
-			logoImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-													constant: -leadingTrailingAnchorLogo),
-			logoImageView.topAnchor.constraint(equalTo: self.winLable.bottomAnchor, constant: logoImageViewDoneButtonTopAnchor),
+			logoImageView.topAnchor.constraint(equalTo: self.winLable.bottomAnchor,
+											   constant: logoImageTopAnchor),
+			logoImageView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+			logoImageView.heightAnchor.constraint(equalToConstant: logoImageViewHeightAnchor),
+			logoImageView.widthAnchor.constraint(equalToConstant: logoImageViewWidthAnchor),
 
 			doneButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
 											   constant: leadingTrailingAnchorStackView),
 			doneButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 												constant: -leadingTrailingAnchorStackView),
-			doneButton.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,
-											constant: logoImageViewDoneButtonTopAnchor),
-			doneButton.heightAnchor.constraint(equalToConstant: stackViewHeightAnchor),
-			doneButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -doneButtonBottomAnchor)
+			doneButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
+											constant: -doneButtonBottomAnchor),
+			doneButton.heightAnchor.constraint(equalToConstant: stackViewHeightAnchor)
 		])
 	}
 

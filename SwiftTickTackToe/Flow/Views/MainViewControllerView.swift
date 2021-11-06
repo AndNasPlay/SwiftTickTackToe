@@ -35,6 +35,10 @@ class MainViewControllerView: UIView {
 
 	private(set) lazy var buttonsFontSize: CGFloat = 20.0
 
+	private(set) lazy var logoImageViewHeightAnchorMultiplier: CGFloat = 0.15
+
+	private(set) lazy var complexitySwitchAnchors: CGFloat = 5.0
+
 	private(set) lazy var logoImageView: UIImageView = {
 		var img = UIImageView()
 		img.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +138,8 @@ class MainViewControllerView: UIView {
 												   constant: leadingTrailingAnchorLogo),
 			logoImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
 													constant: -leadingTrailingAnchorLogo),
-			logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15),
+			logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.heightAnchor,
+												  multiplier: logoImageViewHeightAnchorMultiplier),
 			logoImageView.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -centerYAnchorStackViewIndent),
 
 			buttonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
@@ -151,10 +156,14 @@ class MainViewControllerView: UIView {
 			complexityUIVIew.heightAnchor.constraint(equalToConstant: switcherHeightAnchor),
 			complexityUIVIew.widthAnchor.constraint(equalToConstant: leadingTrailingAnchorStackView * 2),
 
-			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor, constant: -5.0),
-			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor, constant: 5.0),
-			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor, constant: -5.0),
-			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor, constant: 5.0)
+			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor,
+													  constant: -complexitySwitchAnchors),
+			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor,
+													   constant: complexitySwitchAnchors),
+			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor,
+												  constant: -complexitySwitchAnchors),
+			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor,
+													 constant: complexitySwitchAnchors)
 		])
 	}
 

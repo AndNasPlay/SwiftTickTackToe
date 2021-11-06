@@ -22,7 +22,6 @@ class MainViewController: UIViewController, MainViewControllerViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
-
 	}
 
 	override func viewWillAppear(_ animated: Bool) {

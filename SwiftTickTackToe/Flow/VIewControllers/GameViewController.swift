@@ -23,9 +23,13 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 
 	private(set) lazy var referee = Referee(gameboard: self.gameBoard)
 
-	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 30.0
+	private(set) lazy var leadingTrailingGameBoardAnchor: CGFloat = 20.0
 
-	private(set) lazy var topAnchorGameBoard: CGFloat = 80.0
+	private(set) lazy var centerYGameBoardAnchor: CGFloat = 30.0
+
+	private(set) lazy var barButtonItemWidthHeightAnchor: CGFloat = 35.0
+
+	private(set) lazy var topAnchorGameBoard: CGFloat = 70.0
 
 	private(set) lazy var backButtonForNavBar: UIButton = {
 		let button = UIButton(type: .custom)
@@ -98,18 +102,18 @@ public class GameViewController: UIViewController, CongratulatoryDelegate {
 	}
 
 	func constraintsInit() {
-		leftBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
-		leftBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+		leftBarButton.customView?.widthAnchor.constraint(equalToConstant: barButtonItemWidthHeightAnchor).isActive = true
+		leftBarButton.customView?.heightAnchor.constraint(equalToConstant: barButtonItemWidthHeightAnchor).isActive = true
 
-		rightBarButton.customView?.widthAnchor.constraint(equalToConstant: 35).isActive = true
-		rightBarButton.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+		rightBarButton.customView?.widthAnchor.constraint(equalToConstant: barButtonItemWidthHeightAnchor).isActive = true
+		rightBarButton.customView?.heightAnchor.constraint(equalToConstant: barButtonItemWidthHeightAnchor).isActive = true
 
 		gameboardView.leadingAnchor.constraint(equalTo: self.newView.leadingAnchor,
 											   constant: leadingTrailingGameBoardAnchor).isActive = true
-
 		gameboardView.trailingAnchor.constraint(equalTo: self.newView.trailingAnchor,
 												constant: -leadingTrailingGameBoardAnchor).isActive = true
-		gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor).isActive = true
+		gameboardView.centerYAnchor.constraint(equalTo: self.newView.centerYAnchor,
+											   constant: centerYGameBoardAnchor).isActive = true
 		gameboardView.topAnchor.constraint(equalTo: self.newView.firstPlayerLable.bottomAnchor,
 										   constant: topAnchorGameBoard).isActive = true
 	}

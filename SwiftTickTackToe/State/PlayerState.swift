@@ -27,7 +27,7 @@ class PlayerState: GameState {
 		case .second:
 			gameViewController?.newView.firstPlayerStackView.isHidden = true
 			gameViewController?.newView.secondPlayerStackView.isHidden = false
-			gameViewController?.newView.secondPlayerLable.text = "2nd player"
+			gameViewController?.newView.secondPlayerLable.text = "RIVAL"
 		default: break
 		}
 	}

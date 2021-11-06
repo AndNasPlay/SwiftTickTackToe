@@ -17,9 +17,9 @@ class CongratulatoryViewController: UIViewController, CongratulatoryViewControll
 
 	weak var delegate: CongratulatoryDelegate?
 
-	private(set) lazy var newViewLeadingTrailingAnchor: CGFloat = 60.0
+	private(set) lazy var newViewLeadingTrailingAnchor: CGFloat = 40.0
 
-	private(set) lazy var newViewHeightAnchor: CGFloat = 370.0
+	private(set) lazy var newViewHeightAnchor: CGFloat = 360.0
 
 	private(set) lazy var bgAlphaComponent: CGFloat = 0.4
 

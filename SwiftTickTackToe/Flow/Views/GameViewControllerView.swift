@@ -44,7 +44,7 @@ class GameViewControllerView: UIView {
 		text.textAlignment = .right
 		text.textColor = .boardLineColor
 		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
-		text.text = "Computer"
+		text.text = "RIVAL"
 		return text
 	}()
 
