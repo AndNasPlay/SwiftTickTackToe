@@ -69,7 +69,7 @@ class MainViewControllerView: UIView {
 	private(set) lazy var fiveStepsButton: UIButton = {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setTitle("5 * 5", for: .normal)
+		button.setTitle("FIVE STEPS", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
 		button.backgroundColor = .buttonsAndOViewColor
