@@ -35,6 +35,8 @@ class CongratulatoryUIView: UIView {
 
 	private(set) lazy var logoImageViewWidthAnchor: CGFloat = 180.0
 
+	private(set) lazy var mainViewcornerRadius: CGFloat = 10.0
+
 	private(set) lazy var winLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +82,7 @@ class CongratulatoryUIView: UIView {
 
 	func createSubviews() {
 		backgroundColor = .viewBackgroundColor
-		self.layer.cornerRadius = 10
+		self.layer.cornerRadius = mainViewcornerRadius
 		self.addSubview(winLable)
 		self.addSubview(doneButton)
 		self.addSubview(logoImageView)

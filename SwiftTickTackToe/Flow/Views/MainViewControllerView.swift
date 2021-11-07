@@ -52,6 +52,7 @@ class MainViewControllerView: UIView {
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("SINGLE PLAYER", for: .normal)
 		button.setTitleColor(.white, for: .normal)
+		button.setTitleColor(.buttonTextColorBlack, for: .highlighted)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
 		button.backgroundColor = .buttonsAndOViewColor
 		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4
@@ -63,6 +64,7 @@ class MainViewControllerView: UIView {
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("MULTIPLAYER", for: .normal)
 		button.setTitleColor(.white, for: .normal)
+		button.setTitleColor(.buttonTextColorBlack, for: .highlighted)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonsFontSize, weight: .semibold)
 		button.backgroundColor = .buttonsAndOViewColor
 		button.layer.cornerRadius = (stackViewHeightAnchor - stackViewbuttonSpacing) / 4

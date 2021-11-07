@@ -8,6 +8,8 @@
 import Foundation
 
 public struct Move {
+
 	var index: Int?
 	var score: Int
+
 }
