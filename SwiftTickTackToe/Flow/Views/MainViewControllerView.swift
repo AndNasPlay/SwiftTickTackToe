@@ -35,7 +35,9 @@ class MainViewControllerView: UIView {
 
 	private(set) lazy var buttonsFontSize: CGFloat = 20.0
 
-	private(set) lazy var logoImageViewHeightAnchorMultiplier: CGFloat = 0.15
+	private(set) lazy var logoImageViewHeightAnchor: CGFloat = 95.0
+
+	private(set) lazy var logoImageViewWidthAnchor: CGFloat = 210.0
 
 	private(set) lazy var complexitySwitchAnchors: CGFloat = 5.0
 
@@ -136,12 +138,9 @@ class MainViewControllerView: UIView {
 	func constraintsInit() {
 		NSLayoutConstraint.activate([
 
-			logoImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-												   constant: leadingTrailingAnchorLogo),
-			logoImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-													constant: -leadingTrailingAnchorLogo),
-			logoImageView.heightAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.heightAnchor,
-												  multiplier: logoImageViewHeightAnchorMultiplier),
+			logoImageView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+			logoImageView.widthAnchor.constraint(equalToConstant: logoImageViewWidthAnchor),
+			logoImageView.heightAnchor.constraint(equalToConstant: logoImageViewHeightAnchor),
 			logoImageView.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -centerYAnchorStackViewIndent),
 
 			buttonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
