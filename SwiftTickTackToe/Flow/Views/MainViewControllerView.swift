@@ -36,6 +36,8 @@ class MainViewControllerView: UIView {
 
 	private(set) lazy var buttonsFontSize: CGFloat = 20.0
 
+	private(set) lazy var complexitySwitchPadding: CGFloat = 5.0
+
 	private(set) lazy var logoImageView: UIImageView = {
 		var img = UIImageView()
 		img.translatesAutoresizingMaskIntoConstraints = false
@@ -167,10 +169,14 @@ class MainViewControllerView: UIView {
 			complexityUIVIew.heightAnchor.constraint(equalToConstant: switcherHeightAnchor),
 			complexityUIVIew.widthAnchor.constraint(equalToConstant: leadingTrailingAnchorStackView * 2),
 
-			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor, constant: -5.0),
-			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor, constant: 5.0),
-			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor, constant: -5.0),
-			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor, constant: 5.0)
+			complexitySwitch.leadingAnchor.constraint(equalTo: self.complexityUIVIew.leadingAnchor,
+													  constant: -complexitySwitchPadding),
+			complexitySwitch.trailingAnchor.constraint(equalTo: self.complexityUIVIew.trailingAnchor,
+													   constant: complexitySwitchPadding),
+			complexitySwitch.topAnchor.constraint(equalTo: self.complexityUIVIew.topAnchor,
+												  constant: -complexitySwitchPadding),
+			complexitySwitch.bottomAnchor.constraint(equalTo: self.complexityUIVIew.bottomAnchor,
+													 constant: complexitySwitchPadding)
 		])
 	}
 

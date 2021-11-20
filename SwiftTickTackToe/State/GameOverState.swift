@@ -45,6 +45,10 @@ class GameOverState: GameState {
 			return "Computer"
 		case .none:
 			return "There is no winner"
+		case .autoStepFirst:
+			return "You"
+		case .autoStepSecond:
+			return "2nd player"
 		}
 	}
 }

@@ -11,6 +11,8 @@ public enum Player: CaseIterable {
 	case first
 	case second
 	case computer
+	case autoStepFirst
+	case autoStepSecond
 
 	func next(gameType: GameType) -> Player {
 		switch gameType {
@@ -27,20 +29,16 @@ public enum Player: CaseIterable {
 			default: return .first
 			}
 		case .fiveSteps:
-			switch self {
-			case .first:
-				if GameboardState.shared.allGameboardPositions.count <= 4 {
-					return .first
-				} else {
-					return .second
+			if GameboardState.shared.allGameboardPositions.count <= 4 {
+				return .first
+			} else if GameboardState.shared.allGameboardPositions.count < 10 {
+				return .second
+			} else {
+				switch self {
+				case .autoStepFirst: return .autoStepSecond
+				case .autoStepSecond: return .autoStepFirst
+				default: return .autoStepFirst
 				}
-			case .second:
-				if GameboardState.shared.allGameboardPositions.count > 4 {
-					return .second
-				} else {
-					return .first
-				}
-			default: return .first
 			}
 		}
 	}

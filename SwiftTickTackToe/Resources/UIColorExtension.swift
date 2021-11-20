@@ -13,6 +13,6 @@ extension UIColor {
 	static let xViewColor = UIColor(named: "XViewColor") ?? .black
 	static let buttonsAndOViewColor = UIColor(named: "ButtonAndOViewColor") ?? .black
 	static let boardLineColor = UIColor(named: "BoardLineColor") ?? .black
-	static let complexityOnBg = UIColor(named: "complexityOnBg") ?? .black
-	static let complexityOffBg = UIColor(named: "complexityOffBg") ?? .black
+	static let complexityOnBg = UIColor(named: "ComplexityOnBg") ?? .black
+	static let complexityOffBg = UIColor(named: "ComplexityOffBg") ?? .black
 }

@@ -17,6 +17,7 @@ class GameboardState {
 
 	func clear() {
 		allGameboardPositions.removeAll()
+		AutoStepPosition.shared.moveCounter = -1
 	}
 
 	func addMove(gameboardPosition: GameboardPosition) {

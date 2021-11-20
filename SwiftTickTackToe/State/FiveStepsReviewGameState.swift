@@ -23,13 +23,20 @@ public class FiveStepsReviewGameState: GameState {
 			return
 		}
 
-		if let winner = viewController.referee.determineWinner() {
-			viewController.goToNextState(GameOverState(winner: winner, gameViewController: viewController))
-			return
+		if GameboardState.shared.allGameboardPositions.count == 5 || GameboardState.shared.allGameboardPositions.count == 10 {
+			viewController.gameBoard.clear()
+			viewController.gameboardView.clear()
 		}
-		if viewController.gameBoard.noMoreSteps() {
-			viewController.goToNextState(GameOverState(winner: nil, gameViewController: viewController))
-			return
+
+		if GameboardState.shared.allGameboardPositions.count > 10 {
+			if let winner = viewController.referee.determineWinner() {
+				viewController.goToNextState(GameOverState(winner: winner, gameViewController: viewController))
+				return
+			}
+			if viewController.gameBoard.noMoreStepsForFiveSteps() {
+				viewController.goToNextState(GameOverState(winner: nil, gameViewController: viewController))
+				return
+			}
 		}
 		viewController.goToNextState(nextState)
 	}

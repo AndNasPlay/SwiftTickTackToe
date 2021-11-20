@@ -41,6 +41,9 @@
 		16C6314A2714B23B0040B47D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C631492714B23B0040B47D /* GameViewController.swift */; };
 		16C6314F2714B2400040B47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C6314E2714B2400040B47D /* Assets.xcassets */; };
 		16C631522714B2400040B47D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C631502714B2400040B47D /* LaunchScreen.storyboard */; };
+		16CA1A66274680640023B2E9 /* AutoStepPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA1A65274680640023B2E9 /* AutoStepPosition.swift */; };
+		16CA1A682747E2150023B2E9 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA1A672747E2150023B2E9 /* Command.swift */; };
+		16CA1A6A2747E4FE0023B2E9 /* Invoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA1A692747E4FE0023B2E9 /* Invoker.swift */; };
 		16CBC6B927187D70002A308B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBC6B827187D70002A308B /* UIColorExtension.swift */; };
 		16F6A16D271732CF00F93B2F /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6A16C271732CF00F93B2F /* GameType.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +97,9 @@
 		16C6314E2714B2400040B47D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C631512714B2400040B47D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16C631532714B2400040B47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16CA1A65274680640023B2E9 /* AutoStepPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoStepPosition.swift; sourceTree = "<group>"; };
+		16CA1A672747E2150023B2E9 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		16CA1A692747E4FE0023B2E9 /* Invoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoker.swift; sourceTree = "<group>"; };
 		16CBC6B827187D70002A308B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		16F6A16C271732CF00F93B2F /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +175,9 @@
 				1613D4C0271B159A00517D25 /* ComputerPosition.swift */,
 				16266ABD272C01E500A0C6F2 /* Move.swift */,
 				16266ABF272C073400A0C6F2 /* SinglePlayerGameComplexity.swift */,
+				16CA1A65274680640023B2E9 /* AutoStepPosition.swift */,
+				16CA1A672747E2150023B2E9 /* Command.swift */,
+				16CA1A692747E4FE0023B2E9 /* Invoker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,9 +403,11 @@
 				160A7F872735720000605EAE /* FiveStepsPlayerState.swift in Sources */,
 				16A167A32715E5D7007E63FE /* XView.swift in Sources */,
 				16A167A72715E63B007E63FE /* Referee.swift in Sources */,
+				16CA1A6A2747E4FE0023B2E9 /* Invoker.swift in Sources */,
 				16A167992715E4EE007E63FE /* GameboardSize.swift in Sources */,
 				16A167AA2715E770007E63FE /* GameState.swift in Sources */,
 				16A167AC2715E779007E63FE /* PlayerState.swift in Sources */,
+				16CA1A682747E2150023B2E9 /* Command.swift in Sources */,
 				168B98562714B97E00A66B51 /* GameViewControllerView.swift in Sources */,
 				168B98522714B95E00A66B51 /* GameboardView.swift in Sources */,
 				16A167AE2715E789007E63FE /* GameOverState.swift in Sources */,
@@ -409,6 +420,7 @@
 				1613D4C1271B159A00517D25 /* ComputerPosition.swift in Sources */,
 				168B984F2714B90400A66B51 /* MainViewController.swift in Sources */,
 				165248C22726E88A00CA943C /* GameboardState.swift in Sources */,
+				16CA1A66274680640023B2E9 /* AutoStepPosition.swift in Sources */,
 				16266AC4272C6BB300A0C6F2 /* CongratulatoryViewController.swift in Sources */,
 				16A1679F2715E584007E63FE /* MarkView.swift in Sources */,
 				160A7F892735A34100605EAE /* FiveStepsReviewGameState.swift in Sources */,
