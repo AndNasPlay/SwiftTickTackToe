@@ -8,31 +8,36 @@
 import Foundation
 
 protocol Command {
-	func execute()
+	func execute(delay: Double)
 }
 
 class MarkFromCommand: Command {
 
 	private let player: Player
+
 	private let position: GameboardPosition
+
 	private let viewController: GameViewController
 
-	init(player: Player, position: GameboardPosition, context: GameViewController) {
+	init(player: Player, position: GameboardPosition, viewController: GameViewController) {
 		self.player = player
 		self.position = position
-		self.viewController = context
+		self.viewController = viewController
 	}
 
-	func execute() {
-
+	func execute(delay: Double) {
 		viewController.gameBoard.setPlayer(self.player, at: position)
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
 			let markView: MarkView
 			switch self.player {
 			case .first:
 				markView = XView()
+				self.viewController.newView.firstPlayerStackView.isHidden = false
+				self.viewController.newView.secondPlayerStackView.isHidden = true
 			case .second:
 				markView = OView()
+				self.viewController.newView.firstPlayerStackView.isHidden = true
+				self.viewController.newView.secondPlayerStackView.isHidden = false
 			default:
 				return
 			}

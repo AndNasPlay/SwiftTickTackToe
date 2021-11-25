@@ -16,7 +16,7 @@ class GameTypeState {
 		case .singlePlayer:
 			return ComputerState(player: .first, viewController: viewController)
 		case .fiveSteps:
-			return FiveStepsPlayerState(player: .first, gameViewController: viewController)
+			return FiveStepsPlayerState(player: .first, gameViewController: viewController, stepNumber: 0)
 		}
 	}
 }

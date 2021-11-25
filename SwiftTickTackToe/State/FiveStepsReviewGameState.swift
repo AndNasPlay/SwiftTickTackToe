@@ -10,7 +10,9 @@ import Foundation
 public class FiveStepsReviewGameState: GameState {
 
 	public var isCompleted: Bool = false
+
 	private var nextState: GameState
+
 	private weak var viewController: GameViewController?
 
 	init(viewController: GameViewController, nextState: GameState) {
@@ -23,21 +25,15 @@ public class FiveStepsReviewGameState: GameState {
 			return
 		}
 
-		if GameboardState.shared.allGameboardPositions.count == 5 || GameboardState.shared.allGameboardPositions.count == 10 {
-			viewController.gameBoard.clear()
-			viewController.gameboardView.clear()
+		if let winner = viewController.referee.determineWinner() {
+			viewController.goToNextState(GameOverState(winner: winner, gameViewController: viewController))
+			return
+		}
+		if Invoker.shared.gameEnd == true {
+			viewController.goToNextState(GameOverState(winner: nil, gameViewController: viewController))
+			return
 		}
 
-		if GameboardState.shared.allGameboardPositions.count > 10 {
-			if let winner = viewController.referee.determineWinner() {
-				viewController.goToNextState(GameOverState(winner: winner, gameViewController: viewController))
-				return
-			}
-			if viewController.gameBoard.noMoreStepsForFiveSteps() {
-				viewController.goToNextState(GameOverState(winner: nil, gameViewController: viewController))
-				return
-			}
-		}
 		viewController.goToNextState(nextState)
 	}
 

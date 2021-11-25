@@ -42,10 +42,6 @@ public final class Gameboard {
 		return positions.flatMap { $0 }.allSatisfy { $0 != nil }
 	}
 
-	public func noMoreStepsForFiveSteps() -> Bool {
-		return GameboardState.shared.allGameboardPositions.count == 20
-	}
-
 	private func initialPositions() -> [[Player?]] {
 		var positions: [[Player?]] = []
 		for _ in 0 ..< GameboardSize.columns {

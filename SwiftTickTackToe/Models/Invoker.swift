@@ -10,10 +10,17 @@ import Foundation
 final class Invoker {
 
 	static let shared = Invoker()
+
 	private var firstPlayerCommands: [Command] = []
+
 	private var secondPlayerCommands: [Command] = []
 
+	private var markCounter: Int = 5
+
+	public var gameEnd: Bool = false
+
 	public func addCommand(player: Player, command: Command) {
+		gameEnd = false
 		switch player {
 		case .first:
 			firstPlayerCommands.append(command)
@@ -23,11 +30,16 @@ final class Invoker {
 	}
 
 	public func executeGame() {
-		let size = firstPlayerCommands.count
-
-		for counter in 0..<size {
-			self.firstPlayerCommands[counter].execute()
-			self.secondPlayerCommands[counter].execute()
+		for counter in 0..<markCounter {
+			self.firstPlayerCommands[counter].execute(delay: 1.0 + Double(counter))
+			self.secondPlayerCommands[counter].execute(delay: 1.5 + Double(counter))
 		}
+		gameOver()
+	}
+
+	private func gameOver() {
+		gameEnd = true
+		self.firstPlayerCommands.removeAll()
+		self.secondPlayerCommands.removeAll()
 	}
 }

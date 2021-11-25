@@ -11,12 +11,18 @@ class FiveStepsPlayerState: GameState {
 
 	var isCompleted: Bool = false
 
+	let stepsCount: Int = 5
+
+	var stepNumber: Int
+
 	public let player: Player
+
 	private weak var gameViewController: GameViewController?
 
-	init( player: Player, gameViewController: GameViewController) {
+	init( player: Player, gameViewController: GameViewController, stepNumber: Int) {
 		self.player = player
 		self.gameViewController = gameViewController
+		self.stepNumber = stepNumber
 	}
 
 	func begin() {
@@ -28,15 +34,6 @@ class FiveStepsPlayerState: GameState {
 			gameViewController?.newView.firstPlayerStackView.isHidden = true
 			gameViewController?.newView.secondPlayerStackView.isHidden = false
 			gameViewController?.newView.secondPlayerLable.text = "2nd player"
-		case .autoStepFirst:
-			gameViewController?.newView.firstPlayerStackView.isHidden = false
-			gameViewController?.newView.secondPlayerStackView.isHidden = true
-			firstAutoMakeStep()
-		case .autoStepSecond:
-			gameViewController?.newView.firstPlayerStackView.isHidden = true
-			gameViewController?.newView.secondPlayerStackView.isHidden = false
-			gameViewController?.newView.secondPlayerLable.text = "2nd player"
-			secondAutoMakeStep()
 		default: break
 		}
 	}
@@ -55,53 +52,38 @@ class FiveStepsPlayerState: GameState {
 		default:
 			return
 		}
+
 		gameViewController?.gameBoard.setPlayer(self.player, at: position)
 		gameViewController?.gameboardView.placeMarkView(markView, at: position)
 
-		self.isCompleted = true
-		nextStep()
+		let command = MarkFromCommand(player: player, position: position, viewController: gameViewController!)
+		Invoker.shared.addCommand(player: player, command: command)
+
+		if stepNumber < stepsCount {
+			stepNumber += 1
+		}
+
+		if stepNumber == stepsCount && player == .second {
+			gameViewController?.gameboardView.clear()
+			gameViewController?.gameBoard.clear()
+			Invoker.shared.executeGame()
+			DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) { [self] in
+				nextStep(stepNumber: 0)
+				self.isCompleted = true
+			}
+		} else if stepNumber == stepsCount {
+			gameViewController?.gameboardView.clear()
+			gameViewController?.gameBoard.clear()
+			nextStep(stepNumber: 0)
+			self.isCompleted = true
+			return
+		}
 	}
 
-	private func nextStep() {
+	private func nextStep(stepNumber: Int) {
 		let nextStepState = FiveStepsPlayerState(player: player.next(gameType: gameViewController!.gameType),
-												 gameViewController: gameViewController!)
+												 gameViewController: gameViewController!, stepNumber: stepNumber)
 		let state = FiveStepsReviewGameState(viewController: gameViewController!, nextState: nextStepState)
 		gameViewController!.goToNextState(state)
-	}
-
-	private func firstAutoMakeStep() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
-			guard let self = self,
-				  let viewController = self.gameViewController,
-				  let position = AutoStepPosition.shared.nextStep(gameboard: viewController.gameBoard)
-
-			else { return }
-			let markView = XView()
-			viewController.gameBoard.setPlayer(.autoStepSecond, at: position)
-			if viewController.gameBoard.contains(at: position) != nil {
-				viewController.gameboardView.removeMarkView(at: position)
-			}
-			viewController.gameboardView.placeMarkView(markView, at: position)
-			self.isCompleted = true
-			self.nextStep()
-		}
-	}
-
-	private func secondAutoMakeStep() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
-			guard let self = self,
-				  let viewController = self.gameViewController,
-				  let position = AutoStepPosition.shared.nextStep(gameboard: viewController.gameBoard)
-
-			else { return }
-			let markView = OView()
-			viewController.gameBoard.setPlayer(.autoStepFirst, at: position)
-			if viewController.gameBoard.contains(at: position) != nil {
-				viewController.gameboardView.removeMarkView(at: position)
-			}
-			viewController.gameboardView.placeMarkView(markView, at: position)
-			self.isCompleted = true
-			self.nextStep()
-		}
 	}
 }
