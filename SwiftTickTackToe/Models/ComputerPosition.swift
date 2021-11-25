@@ -125,7 +125,37 @@ public class ComputerPosition {
 	}
 
 	func nextStep(gameboard: Gameboard, complexity: SinglePlayerGameComplexity) -> GameboardPosition? {
-		if complexity == .hard {
+
+		if GameboardState.shared.gamesPlayed % 3 == 0 && complexity == .hard && GameboardState.shared.allGameboardPositions[0] == GameboardPosition(column: 2, row: 0) {
+
+			allBoardMovesArray = GameboardState.shared.allGameboardPositions
+
+			if allBoardMovesArray.count < 3 {
+				return findRandomStep(gameboard: gameboard)
+			} else {
+				var allMoveAiArray: [GameboardPosition] = []
+				var allMoveHumanArray: [GameboardPosition] = []
+				for counter in 0...allBoardMovesArray.count - 1 {
+					if counter == 0 || counter % 2 == 0 {
+						allMoveHumanArray.append(allBoardMovesArray[counter])
+					} else {
+						allMoveAiArray.append(allBoardMovesArray[counter])
+					}
+				}
+				let positionForWin = findPositionForWin(gameboard: gameboard, allMoveAiArray: allMoveAiArray)
+				let positionForCancel = findPositionForCancel(gameboard: gameboard, allMoveHumanArray: allMoveHumanArray)
+
+				if  positionForWin != GameboardPosition(column: 0, row: 0) {
+					position = positionForWin
+					return position
+				} else if  positionForCancel != GameboardPosition(column: 0, row: 0) {
+					position = positionForCancel
+					return position
+				} else {
+					return findRandomStep(gameboard: gameboard)
+				}
+			}
+		} else if complexity == .hard {
 			position = computerMovesAlgorithm.prepareForBoard(
 				gameboardPositions: computerMovesAlgorithm.minimax(newBoard: computerMovesAlgorithm.prepareForMinimax(
 																	gameboardPositions: GameboardState.shared.allGameboardPositions),

@@ -13,9 +13,9 @@ public class ReviewGameState: GameState {
 	private var nextState: GameState
 	private weak var viewController: GameViewController?
 
-	init(context: GameViewController, nextState: GameState) {
+	init(viewController: GameViewController, nextState: GameState) {
 		self.nextState = nextState
-		self.viewController = context
+		self.viewController = viewController
 	}
 
 	public func begin() {
@@ -24,10 +24,16 @@ public class ReviewGameState: GameState {
 		}
 
 		if let winner = viewController.referee.determineWinner() {
+			if viewController.complexity == .hard && viewController.gameType == .singlePlayer {
+				GameboardState.shared.addGame()
+			}
 			viewController.goToNextState(GameOverState(winner: winner, gameViewController: viewController))
 			return
 		}
 		if viewController.gameBoard.noMoreSteps() {
+			if viewController.complexity == .hard && viewController.gameType == .singlePlayer {
+				GameboardState.shared.addGame()
+			}
 			viewController.goToNextState(GameOverState(winner: nil, gameViewController: viewController))
 			return
 		}

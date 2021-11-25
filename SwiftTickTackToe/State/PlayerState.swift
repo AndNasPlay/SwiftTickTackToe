@@ -59,7 +59,7 @@ class PlayerState: GameState {
 	private func nextStep() {
 		let nextStepState = PlayerState(player: player.next(gameType: gameViewController!.gameType),
 										gameViewController: gameViewController!)
-		let state = ReviewGameState(context: gameViewController!, nextState: nextStepState)
+		let state = ReviewGameState(viewController: gameViewController!, nextState: nextStepState)
 		gameViewController!.goToNextState(state)
 	}
 }

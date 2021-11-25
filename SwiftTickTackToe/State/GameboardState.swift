@@ -15,8 +15,14 @@ class GameboardState {
 
 	var allGameboardPositions: [GameboardPosition] = []
 
+	var gamesPlayed: Int = 0
+
 	func clear() {
 		allGameboardPositions.removeAll()
+	}
+
+	func addGame() {
+		gamesPlayed += 1
 	}
 
 	func addMove(gameboardPosition: GameboardPosition) {

@@ -70,7 +70,7 @@ public class ComputerState: GameState {
 		let nextStepState = ComputerState(player: player.next(gameType: viewController.gameType),
 										  viewController: viewController)
 
-		let state = ReviewGameState(context: viewController, nextState: nextStepState)
+		let state = ReviewGameState(viewController: viewController, nextState: nextStepState)
 		viewController.goToNextState(state)
 	}
 }
