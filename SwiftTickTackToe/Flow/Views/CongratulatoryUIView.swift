@@ -59,7 +59,7 @@ class CongratulatoryUIView: UIView {
 		var button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("PLAY AGAIN", for: .normal)
-		button.setTitleColor(.white, for: .normal)
+		button.setTitleColor(.buttonTextColorNormal, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: buttonFontSize)
 		button.backgroundColor = .buttonsAndOViewColor
 		button.layer.cornerRadius = stackViewHeightAnchor / 2

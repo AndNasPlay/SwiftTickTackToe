@@ -24,7 +24,7 @@ class GameViewControllerView: UIView {
 	private(set) lazy var firstPlayerLable: UILabel = {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
-		text.textColor = .boardLineColor
+		text.textColor = .playerNameColor
 		text.textAlignment = .left
 		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "YOU"
@@ -42,7 +42,7 @@ class GameViewControllerView: UIView {
 		let text = UILabel()
 		text.translatesAutoresizingMaskIntoConstraints = false
 		text.textAlignment = .right
-		text.textColor = .boardLineColor
+		text.textColor = .playerNameColor
 		text.font = UIFont.boldSystemFont(ofSize: lableUIFontSize)
 		text.text = "RIVAL"
 		return text

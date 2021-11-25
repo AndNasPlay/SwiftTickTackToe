@@ -26,7 +26,7 @@
     </scenes>
     <resources>
         <namedColor name="MainVIewBackgroundColor">
-            <color red="0.88627450980392153" green="0.80392156862745101" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88599997758865356" green="0.80400002002716064" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

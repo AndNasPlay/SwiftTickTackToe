@@ -10,8 +10,12 @@ import Foundation
 public class ReviewGameState: GameState {
 
 	public var isCompleted: Bool = false
+
 	private var nextState: GameState
+
 	private weak var viewController: GameViewController?
+
+	private let reviewGameCounter: Int = 21
 
 	init(viewController: GameViewController, nextState: GameState) {
 		self.nextState = nextState
@@ -21,6 +25,10 @@ public class ReviewGameState: GameState {
 	public func begin() {
 		guard let viewController = self.viewController else {
 			return
+		}
+
+		if GameboardState.shared.gamesPlayed > reviewGameCounter {
+			GameboardState.shared.updateGameCounter()
 		}
 
 		if let winner = viewController.referee.determineWinner() {

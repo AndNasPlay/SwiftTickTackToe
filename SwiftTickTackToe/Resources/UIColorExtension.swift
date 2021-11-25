@@ -15,6 +15,8 @@ extension UIColor {
 	static let boardLineColor = UIColor(named: "BoardLineColor") ?? .black
 	static let complexityOnBg = UIColor(named: "ComplexityOnBg") ?? .black
 	static let complexityOffBg = UIColor(named: "ComplexityOffBg") ?? .black
-	static let buttonTextColorBlack = UIColor(named: "ButtonTextColorBlack") ?? .black
+	static let buttonTextColorNormal = UIColor(named: "ButtonTextColorNormal") ?? .black
+	static let buttonTextColorHighlighted = UIColor(named: "ButtonTextColorHighlighted") ?? .black
+	static let playerNameColor = UIColor(named: "PlayerNameColor") ?? .white
 
 }

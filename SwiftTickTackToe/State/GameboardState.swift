@@ -25,6 +25,10 @@ class GameboardState {
 		gamesPlayed += 1
 	}
 
+	func updateGameCounter() {
+		gamesPlayed = 1
+	}
+
 	func addMove(gameboardPosition: GameboardPosition) {
 		allGameboardPositions.append(gameboardPosition)
 	}
